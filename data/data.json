@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-07T12:14:31Z",
+    "version": "2026-09-07T13:09:27Z",
     "updated": "2026-09-07",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -26,18 +26,18 @@
       "boulders": [
         {
           "id": "the-terrace",
-          "name": "Hassan Terrace",
+          "name": "Għar Ħasan Terrace",
           "description": "The first terrace of boulders reached when entering the crag.",
           "topos": [
             {
               "src": "images/topos/hassan-topo-1.png",
               "alt": "Topo of Hassan Terrace, left-hand section, showing problems 1 to 6 marked in red",
-              "credit": "Photo: placeholder"
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide"
             },
             {
               "src": "images/topos/hassan-topo-2.png",
               "alt": "Topo of Hassan Terrace, right-hand section, showing problems 7 to 11 marked in red",
-              "credit": "Photo: placeholder"
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide"
             }
           ],
           "climbs": [
@@ -183,6 +183,110 @@
                 "name": "Jeffrey Camilleri",
                 "year": 2001
               }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wied-il-ghasel-mosta-valley",
+      "name": "Wied il-Għasel - Mosta Valley",
+      "description": "Wied il-Għasel (Honey Valley in English)",
+      "approach": "something",
+      "parking": "Parking is best by the bus stop and traffic lights directly before the path down to the crag.\n\nhttps://maps.app.goo.gl/NmAChqQBpf1pqVxF7",
+      "coords": {
+        "lat": 35.92039,
+        "lng": 14.429389
+      },
+      "mapUrl": "https://maps.google.com/?q=35.92039,14.429389",
+      "boulders": [
+        {
+          "id": "jeff-s-blocks",
+          "name": "Jeff's Blocks",
+          "description": "something",
+          "topos": [
+            {
+              "src": "images/topos/jeffs-topo-1.png",
+              "alt": "Topo of Jeff's Blocks 1",
+              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007"
+            },
+            {
+              "src": "images/topos/jeffs-topo-2.png",
+              "alt": "Topo of Jeff's Blocks 2",
+              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007"
+            },
+            {
+              "src": "images/topos/jeffs-topo-3.png",
+              "alt": "Topo of Jeff's Blocks 3",
+              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007"
+            },
+            {
+              "src": "images/topos/jeffs-topo-4.png",
+              "alt": "Topo of Jeff's Blocks 4",
+              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007"
+            }
+          ],
+          "climbs": [
+            {
+              "name": "Tree of Life",
+              "slug": "tree-of-life",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "stand"
+            },
+            {
+              "name": "Electra",
+              "slug": "electra",
+              "gradeFont": "6A",
+              "gradeV": "V3",
+              "stars": 0,
+              "start": "stand",
+              "description": "Start with the left hand pinch, lunge for the small flat ledge."
+            },
+            {
+              "name": "Freaky",
+              "slug": "freaky",
+              "gradeFont": "7A",
+              "gradeV": "V6",
+              "stars": 0,
+              "start": "stand"
+            },
+            {
+              "name": "Eternal Youth",
+              "slug": "eternal-youth",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "stand",
+              "description": "Start from the finger ledge, gain the left hand pinch side-hold."
+            },
+            {
+              "name": "Third Eye",
+              "slug": "third-eye",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "stand",
+              "description": "Pull on pockets then go for a rockover onto the slab. Intense."
+            },
+            {
+              "name": "Phantomas",
+              "slug": "phantomas",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "stand",
+              "description": "\"One of the rivers of hell, all that drank the water become forgetful of the past!\""
+            },
+            {
+              "name": "Minos",
+              "slug": "minos",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand",
+              "description": "Easily up the slab."
             }
           ]
         }
