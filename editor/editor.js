@@ -15,7 +15,7 @@ import {
   validateData, toJson
 } from "../shared/schema.js";
 import { FONT_SCALE, V_SCALE, vForFont } from "../shared/grades.js";
-import { decorate, boulderHtml, sectorHtml } from "../js/render.js";
+import { decorate, boulderHtml, sectorHtml, watchBrokenImages } from "../js/render.js";
 
 var DRAFT_KEY = "mb-editor-draft";
 var IDB_NAME = "mb-editor";
@@ -1390,6 +1390,7 @@ function initPreview() {
   var frame = $("#preview");
   frame.addEventListener("load", function () {
     state.previewReady = true;
+    watchBrokenImages(frame.contentDocument);
     renderPreview();
   });
   frame.srcdoc = PREVIEW_DOC;

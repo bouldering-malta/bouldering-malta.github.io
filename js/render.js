@@ -89,12 +89,24 @@ export function gradeHtml(climb) {
 
 /* A file that fails to load falls back to its own alt text in a plain outlined
    box (see img.is-missing in style.css) rather than the browser's broken-image
-   glyph, so a not-yet-added topo still reads as something deliberate. */
+   glyph, so a not-yet-added topo still reads as something deliberate.
+
+   The is-missing class is applied by watchBrokenImages() rather than an inline
+   onerror, which does not reliably fire for markup inserted via innerHTML. */
 export function mediaHtml(img, cls) {
   if (!img || !img.src) return "";
   return '<img' + (cls ? ' class="' + cls + '"' : "") +
-    ' src="' + esc(img.src) + '" alt="' + esc(img.alt) + '" loading="lazy"' +
-    " onerror=\"this.classList.add('is-missing')\">";
+    ' src="' + esc(img.src) + '" alt="' + esc(img.alt) + '" loading="lazy">';
+}
+
+/* Error events do not bubble, but they do fire on the way down, so one
+   capturing listener catches every image in the document — including ones
+   rendered long after this runs. */
+export function watchBrokenImages(doc) {
+  doc.addEventListener("error", function (e) {
+    var el = e.target;
+    if (el && el.tagName === "IMG") el.classList.add("is-missing");
+  }, true);
 }
 
 /* ------------------------------------------------------------------ nodes */

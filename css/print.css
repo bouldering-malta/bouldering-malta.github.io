@@ -18,11 +18,26 @@ a { color: #000 !important; text-decoration: none; }
 .skip-link,
 .grade-toggle,
 .copy-link,
+.band-title,
 .btn,
 .lightbox,
 #load-error { display: none !important; }
 
+/* Band tones are a screen device: print is black on white throughout. */
+.band,
+.band-cover,
+.band-jump,
+.band-sectors,
+.band-catalog,
+.band-footer {
+  background: none !important;
+  color: #000 !important;
+  border: 0 !important;
+}
+.band-inner { max-width: none; padding: 0; }
+
 /* When a print run is active, strip everything but the target sector(s) */
+body[data-print-sector] .band-jump,
 body[data-print-sector] .masthead,
 body[data-print-sector] .sector-index,
 body[data-print-sector] .ack,

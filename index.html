@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bouldering Malta</title>
 <meta name="description" content="A bouldering guide to Malta. Sectors, topos, grades and problem descriptions. Free to use.">
-<meta name="theme-color" content="#f7f6f3">
+<meta name="theme-color" content="#14201f">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/print.css" media="print">
 </head>
@@ -13,56 +13,70 @@
 
 <a class="skip-link" href="#sector-index">Skip to sectors</a>
 
-<header class="masthead">
-  <div id="hero" class="hero"></div>
+<header class="band band-cover">
+  <div class="band-inner masthead">
+    <div id="hero" class="hero"></div>
 
-  <div class="masthead-text">
-    <h1>Bouldering Malta</h1>
+    <div class="masthead-text">
+      <h1>Bouldering Malta</h1>
 
-    <p class="contact">
-      Got a new problem, a correction, or a sector missing from here?
-      Email <a href="mailto:boulderingmalta@gmail.com" id="contact-email">boulderingmalta@gmail.com</a>
-      to get it added.
-    </p>
-    <p class="contact contact-alt">
-      With a GitHub account, you can
-      <a href="#" id="issue-link" rel="noopener">open a problem submission</a> instead.
-    </p>
+      <p class="contact">
+        Got a new problem, a correction, or a sector missing from here?
+        Email <a href="mailto:boulderingmalta@gmail.com" id="contact-email">boulderingmalta@gmail.com</a>
+        to get it added.
+      </p>
+      <p class="contact contact-alt">
+        With a GitHub account, you can
+        <a href="#" id="issue-link" rel="noopener">open a problem submission</a> instead.
+      </p>
 
-    <div class="grade-toggle" role="group" aria-label="Grade scale">
-      <button type="button" id="scale-font" class="is-active" aria-pressed="true">Font</button>
-      <button type="button" id="scale-v" aria-pressed="false">V</button>
+      <div class="grade-toggle" role="group" aria-label="Grade scale">
+        <button type="button" id="scale-font" class="is-active" aria-pressed="true">Font</button>
+        <button type="button" id="scale-v" aria-pressed="false">V</button>
+      </div>
     </div>
   </div>
 </header>
 
 <main>
-  <p id="load-error" class="load-error" hidden>
-    The guide data could not be loaded. Check your connection and reload the page.
-    If it keeps failing, email <a href="mailto:boulderingmalta@gmail.com">boulderingmalta@gmail.com</a>.
-  </p>
-
-  <section class="ack" aria-labelledby="ack-h">
-    <details open>
-      <summary><h2 id="ack-h">Acknowledgements</h2></summary>
-      <p>
-        Topos and problem descriptions are adapted from
-        <cite>Malta Rock Climbing &mdash; the comprehensive guide</cite> (2007), used with
-        the kind permission of Andrew Warrington, president of the
-        <a href="https://www.climbmalta.com/" rel="noopener">Malta Rock Climbing Club</a>.
+  <section class="band band-intro" aria-labelledby="ack-h">
+    <div class="band-inner">
+      <p id="load-error" class="load-error" hidden>
+        The guide data could not be loaded. Check your connection and reload the page.
+        If it keeps failing, email <a href="mailto:boulderingmalta@gmail.com">boulderingmalta@gmail.com</a>.
       </p>
-    </details>
+
+      <div class="ack">
+        <details open>
+          <summary><h2 id="ack-h">Acknowledgements</h2></summary>
+          <p>
+            Topos and problem descriptions are adapted from
+            <cite>Malta Rock Climbing &mdash; the comprehensive guide</cite> (2007), used with
+            the kind permission of Andrew Warrington, president of the
+            <a href="https://www.climbmalta.com/" rel="noopener">Malta Rock Climbing Club</a>.
+          </p>
+        </details>
+      </div>
+    </div>
   </section>
 
-  <nav id="sector-index" class="sector-index" aria-labelledby="sector-index-h">
-    <h2 id="sector-index-h">Sectors</h2>
-    <ol id="sector-index-list"></ol>
-    <button type="button" id="print-all" class="btn">Download full guide (PDF)</button>
+  <nav id="sector-index" class="band band-jump" aria-label="Jump to a sector">
+    <div class="band-inner jump">
+      <span class="jump-label">Jump to</span>
+      <ul id="sector-index-list" class="jump-list"></ul>
+      <button type="button" id="print-all" class="btn btn-solid">Download full guide (PDF)</button>
+    </div>
   </nav>
 
-  <div id="sectors"></div>
+  <div class="band band-sectors">
+    <div class="band-inner">
+      <h2 class="band-title">Sectors</h2>
+      <div id="sectors"></div>
+    </div>
+  </div>
 
-  <section id="catalog" class="catalog" aria-labelledby="catalog-h">
+  <section id="catalog" class="band band-catalog catalog" aria-labelledby="catalog-h">
+    <div class="band-inner">
     <details id="catalog-details" open>
       <summary><h2 id="catalog-h">All problems</h2></summary>
 
@@ -113,16 +127,19 @@
         <tbody id="catalog-body"></tbody>
       </table>
     </details>
+    </div>
   </section>
 </main>
 
-<footer class="page-footer">
+<footer class="band band-footer page-footer">
+  <div class="band-inner">
   <p id="footer-meta"></p>
   <p>
     Corrections and new problems:
     <a href="mailto:boulderingmalta@gmail.com">boulderingmalta@gmail.com</a>
   </p>
   <p class="licence">All content released under CC0 1.0 — public domain, free to reuse.</p>
+  </div>
 </footer>
 
 <div id="print-footer" class="print-footer" aria-hidden="true"></div>

@@ -2,6 +2,16 @@
    Type-led, near-black on off-white, one accent, no decorative borders. */
 
 :root {
+  /* Bands. Each region of the page gets its own tone, edge to edge, so the
+     separation comes from the surface rather than from borders or shadows. */
+  --deep: #14201f;
+  --deep-ink: #f1efe9;
+  --deep-soft: #a9b6b3;
+  --deep-accent: #7cc7bd;
+  --paper: #f7f6f3;
+  --raised: #fffefc;
+  --tint: #edeae2;
+
   --bg: #f7f6f3;
   --ink: #191a1a;
   --ink-soft: #565b5a;
@@ -37,6 +47,40 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+/* ---------- bands ---------- */
+
+.band { width: 100%; }
+.band-inner {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+}
+
+.band-cover   { background: var(--deep); color: var(--deep-ink); }
+.band-intro   { background: var(--paper); }
+.band-jump    { background: var(--tint); border-bottom: 1px solid var(--rule); }
+.band-sectors { background: var(--raised); }
+.band-catalog { background: var(--tint); }
+.band-footer  { background: var(--deep); color: var(--deep-soft); }
+
+.band-intro   > .band-inner { padding-top: 1.6rem; padding-bottom: 1.6rem; }
+.band-jump    > .band-inner { padding-top: 0.85rem; padding-bottom: 0.85rem; }
+.band-sectors > .band-inner { padding-top: 2.4rem; padding-bottom: 3rem; }
+.band-catalog > .band-inner { padding-top: 1rem; padding-bottom: 2.4rem; }
+.band-footer  > .band-inner { padding-top: 2rem; padding-bottom: 2.4rem; }
+
+/* The label that opens a band, distinct from the serif headings inside it. */
+.band-title {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.9rem;
+}
+
 h1, h2, h3 {
   font-family: var(--serif);
   font-weight: 400;
@@ -57,12 +101,6 @@ a:hover { text-decoration-thickness: 2px; }
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-}
-
-main {
-  padding: 0 var(--pad);
-  max-width: 54rem;
-  margin: 0 auto;
 }
 
 .skip-link {
@@ -91,6 +129,33 @@ main {
   cursor: pointer;
 }
 .btn:hover { background: var(--accent-soft); }
+
+/* Whole-guide download: the one solid, deliberate action on the page. */
+.btn-solid {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-size: 0.86rem;
+  padding: 0.5rem 0.9rem;
+  min-height: 40px;
+  flex: 0 0 auto;
+}
+.btn-solid:hover { background: #0a4f4b; border-color: #0a4f4b; }
+
+/* Per-sector download: a quiet text link, so it reads as a detail of the row
+   it sits in rather than a second call to action. */
+.print-sector,
+.print-sector:hover {
+  background: none;
+  border: 0;
+  padding: 0;
+  min-height: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.print-sector:hover { color: var(--accent); }
 .btn-quiet {
   border-color: var(--rule);
   color: var(--ink-soft);
@@ -98,15 +163,10 @@ main {
 
 /* ---------- masthead ---------- */
 
-.masthead {
-  max-width: 54rem;
-  margin: 0 auto;
-  padding: 0 var(--pad) 2.4rem;
-}
+.masthead { padding-top: 0; padding-bottom: 2.6rem; }
 
-.hero {
-  margin: 0 calc(var(--pad) * -1) 1.6rem;
-}
+.hero { margin: 0 0 1.6rem; }
+.hero img { border-radius: 2px; }
 
 .masthead h1 {
   font-size: clamp(2.6rem, 11vw, 4.4rem);
@@ -115,9 +175,10 @@ main {
 
 .contact {
   font-size: 0.98rem;
-  color: var(--ink-soft);
+  color: var(--deep-soft);
 }
-.contact a { color: var(--accent); }
+.contact a { color: var(--deep-accent); }
+.hero-credit { color: var(--deep-soft); }
 .contact-alt { font-size: 0.9rem; }
 
 .grade-toggle {
@@ -130,15 +191,15 @@ main {
   min-height: 44px;
   padding: 0.5rem 1.1rem;
   background: none;
-  color: var(--ink-soft);
-  border: 1px solid var(--rule);
+  color: var(--deep-soft);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   cursor: pointer;
 }
 .grade-toggle button + button { border-left: 0; }
 .grade-toggle button.is-active {
-  color: var(--bg);
-  background: var(--accent);
-  border-color: var(--accent);
+  color: var(--deep);
+  background: var(--deep-ink);
+  border-color: var(--deep-ink);
 }
 
 /* ---------- images ---------- */
@@ -161,8 +222,13 @@ img.is-missing {
 
 .hero img { display: block; width: 100%; height: auto; }
 /* A missing hero stays a compact strip. Holding open a 16:9 void at the top of
-   the page is worse than saying nothing. */
-.hero img.is-missing { min-height: 5rem; }
+   the page is worse than saying nothing. On the dark cover band the fallback
+   needs its own light treatment. */
+.hero img.is-missing {
+  min-height: 5rem;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--deep-soft);
+}
 .hero-credit {
   margin: 0.35rem var(--pad) 0;
   font-size: 0.78rem;
@@ -188,40 +254,53 @@ figcaption {
   margin-top: 0.4rem;
 }
 
-/* ---------- index ---------- */
+/* ---------- jump bar ---------- */
 
-.sector-index { padding: 2.2rem 0 1.6rem; }
-.sector-index h2 { margin-bottom: 0.8rem; }
-.sector-index ol {
-  list-style: none;
-  margin: 0 0 1.2rem;
-  padding: 0;
-}
-.sector-index li { border-top: 1px solid var(--rule); }
-.sector-index a {
+/* Navigation, not content. Small sans type on one line, so it can never be
+   mistaken for the serif sector headings it points at. */
+.jump {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
   align-items: baseline;
-  min-height: 44px;
-  padding: 0.7rem 0;
-  text-decoration: none;
-  color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.3rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
 }
-.sector-index a:hover .sector-index-name { text-decoration: underline; }
-.sector-index .count {
-  font-family: var(--sans);
-  font-size: 0.85rem;
+
+.jump-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--ink-soft);
 }
+
+.jump-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1 1 auto;
+}
+.jump-list a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  min-height: 44px;
+  align-content: center;
+  font-size: 0.92rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.jump-list a:hover .jump-name { text-decoration: underline; }
+.jump-list .count { font-size: 0.78rem; color: var(--ink-soft); }
 
 /* ---------- sectors ---------- */
 
 .sector {
   border-top: 1px solid var(--rule);
 }
+.sector:first-of-type { border-top: 0; }
 .sector:last-of-type { border-bottom: 1px solid var(--rule); }
 
 .sector > summary {
@@ -405,12 +484,12 @@ body.grade-v .g-font::after { content: ")"; }
 
 /* ---------- catalog ---------- */
 
-.catalog { padding: 3rem 0 1rem; }
+.catalog { padding: 0; }
 
-.catalog > details,
+.catalog > .band-inner > details { border-top: 0; }
 .ack > details { border-top: 1px solid var(--rule); }
 
-.catalog > details > summary,
+.catalog > .band-inner > details > summary,
 .ack > details > summary {
   display: flex;
   align-items: baseline;
@@ -419,7 +498,7 @@ body.grade-v .g-font::after { content: ")"; }
   list-style: none;
   min-height: 44px;
 }
-.catalog > details > summary::-webkit-details-marker,
+.catalog > .band-inner > details > summary::-webkit-details-marker,
 .ack > details > summary::-webkit-details-marker { display: none; }
 
 .catalog h2,
@@ -433,10 +512,10 @@ body.grade-v .g-font::after { content: ")"; }
   font-family: var(--sans);
   font-size: 0.8em;
 }
-.catalog > details[open] h2::before,
+.catalog > .band-inner > details[open] h2::before,
 .ack > details[open] h2::before { content: "–"; }
 
-.catalog > details[open] > summary { margin-bottom: 1rem; }
+.catalog > .band-inner > details[open] > summary { margin-bottom: 1rem; }
 
 .filters {
   display: grid;
@@ -500,14 +579,12 @@ body.grade-v .g-font::after { content: ")"; }
 /* ---------- footer ---------- */
 
 .page-footer {
-  max-width: 54rem;
-  margin: 0 auto;
-  padding: 2.5rem var(--pad) 4rem;
-  border-top: 1px solid var(--rule);
   font-size: 0.85rem;
-  color: var(--ink-soft);
+  color: var(--deep-soft);
 }
-.page-footer p { margin-bottom: 0.4rem; }
+.page-footer p { margin-bottom: 0.4rem; max-width: var(--measure); }
+.page-footer a { color: var(--deep-accent); }
+.page-footer .licence { color: var(--deep-soft); opacity: 0.75; }
 
 .print-footer { display: none; }
 

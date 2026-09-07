@@ -5,7 +5,8 @@
    imports, so what you see while authoring is what the site renders. */
 
 import {
-  decorate, esc, gradeHtml, starsHtml, mediaHtml, sectorHtml, topoList
+  decorate, esc, gradeHtml, starsHtml, mediaHtml, sectorHtml, topoList,
+  watchBrokenImages
 } from "./render.js";
 import { FONT_SCALE, V_SCALE } from "../shared/grades.js";
 
@@ -61,8 +62,8 @@ function renderContact(meta) {
 function renderIndex(sectors) {
   $("#sector-index-list").innerHTML = sectors.map(function (s) {
     return '<li><a href="#' + esc(s.id) + '">' +
-      '<span class="sector-index-name">' + esc(s.name) + "</span>" +
-      '<span class="count">' + s._count + " problems</span></a></li>";
+      '<span class="jump-name">' + esc(s.name) + "</span>" +
+      '<span class="count">' + s._count + "</span></a></li>";
   }).join("");
 }
 
@@ -407,6 +408,7 @@ function wirePrint() {
 /* ------------------------------------------------------------------ boot */
 
 function start(data) {
+  watchBrokenImages(document);
   state.data = data;
   document.title = data.meta.title;
 
