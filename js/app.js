@@ -372,45 +372,6 @@ function wirePrint() {
   $("#print-all").addEventListener("click", function () { runPrint("all"); });
 }
 
-/* ------------------------------------------------------------------ service worker */
-
-function showUpdateBar(onReload) {
-  $("#update-bar").hidden = false;
-  $("#update-reload").onclick = onReload;
-}
-
-function registerServiceWorker() {
-  if (!("serviceWorker" in navigator)) return;
-
-  navigator.serviceWorker.register("sw.js").then(function (reg) {
-    reg.addEventListener("updatefound", function () {
-      var incoming = reg.installing;
-      if (!incoming) return;
-      incoming.addEventListener("statechange", function () {
-        if (incoming.state === "installed" && navigator.serviceWorker.controller) {
-          showUpdateBar(function () { incoming.postMessage({ type: "SKIP_WAITING" }); });
-        }
-      });
-    });
-  }).catch(function (err) { console.warn("Service worker registration failed:", err); });
-
-  /* Content-only changes never alter a byte of sw.js, so `updatefound` stays
-     silent for them. The worker watches data.json's version instead and tells
-     us when it has cached a newer one. */
-  navigator.serviceWorker.addEventListener("message", function (e) {
-    if (e.data && e.data.type === "DATA_UPDATED") {
-      showUpdateBar(function () { location.reload(); });
-    }
-  });
-
-  var reloading = false;
-  navigator.serviceWorker.addEventListener("controllerchange", function () {
-    if (reloading) return;
-    reloading = true;
-    location.reload();
-  });
-}
-
 /* ------------------------------------------------------------------ boot */
 
 function start(data) {
@@ -438,8 +399,6 @@ function start(data) {
 
   revealTarget(location.hash);
   window.addEventListener("hashchange", function () { revealTarget(location.hash); });
-
-  registerServiceWorker();
 }
 
 fetch(CONFIG.dataUrl, { cache: "no-cache" })

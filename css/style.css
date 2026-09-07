@@ -96,32 +96,6 @@ main {
   color: var(--ink-soft);
 }
 
-/* ---------- update bar ---------- */
-
-.update-bar {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  display: flex;
-  gap: 0.9rem;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  background: var(--accent);
-  color: #fff;
-  padding: 0.6rem var(--pad);
-  font-size: 0.92rem;
-}
-.update-bar button {
-  font: inherit;
-  background: none;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.6);
-  padding: 0.35rem 0.75rem;
-  min-height: 36px;
-  cursor: pointer;
-}
-
 /* ---------- masthead ---------- */
 
 .masthead {
