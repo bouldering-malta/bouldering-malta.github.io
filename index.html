@@ -56,54 +56,56 @@
   <div id="sectors"></div>
 
   <section id="catalog" class="catalog" aria-labelledby="catalog-h">
-    <h2 id="catalog-h">All problems</h2>
+    <details id="catalog-details" open>
+      <summary><h2 id="catalog-h">All problems</h2></summary>
 
-    <div class="filters">
-      <div class="filter filter-name">
-        <label for="f-name">Name</label>
-        <input type="search" id="f-name" placeholder="Search problems" autocomplete="off">
+      <div class="filters">
+        <div class="filter filter-name">
+          <label for="f-name">Name</label>
+          <input type="search" id="f-name" placeholder="Search problems" autocomplete="off">
+        </div>
+        <div class="filter">
+          <label for="f-grade-from">Grade from</label>
+          <select id="f-grade-from"></select>
+        </div>
+        <div class="filter">
+          <label for="f-grade-to">Grade to</label>
+          <select id="f-grade-to"></select>
+        </div>
+        <div class="filter">
+          <label for="f-sector">Sector</label>
+          <select id="f-sector"></select>
+        </div>
+        <div class="filter">
+          <label for="f-stars">Minimum stars</label>
+          <select id="f-stars">
+            <option value="0">Any</option>
+            <option value="1">★</option>
+            <option value="2">★★</option>
+            <option value="3">★★★</option>
+          </select>
+        </div>
+        <button type="button" id="f-clear" class="btn btn-quiet">Clear filters</button>
       </div>
-      <div class="filter">
-        <label for="f-grade-from">Grade from</label>
-        <select id="f-grade-from"></select>
-      </div>
-      <div class="filter">
-        <label for="f-grade-to">Grade to</label>
-        <select id="f-grade-to"></select>
-      </div>
-      <div class="filter">
-        <label for="f-sector">Sector</label>
-        <select id="f-sector"></select>
-      </div>
-      <div class="filter">
-        <label for="f-stars">Minimum stars</label>
-        <select id="f-stars">
-          <option value="0">Any</option>
-          <option value="1">★</option>
-          <option value="2">★★</option>
-          <option value="3">★★★</option>
-        </select>
-      </div>
-      <button type="button" id="f-clear" class="btn btn-quiet">Clear filters</button>
-    </div>
 
-    <p id="result-count" class="result-count" aria-live="polite"></p>
-    <p id="no-results" class="no-results" hidden>No problems match these filters.</p>
+      <p id="result-count" class="result-count" aria-live="polite"></p>
+      <p id="no-results" class="no-results" hidden>No problems match these filters.</p>
 
-    <table id="catalog-table" class="catalog-table">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col" aria-sort="none" id="th-grade">
-            <button type="button" id="sort-grade">Grade<span class="sort-mark" aria-hidden="true"></span></button>
-          </th>
-          <th scope="col">Stars</th>
-          <th scope="col">Sector</th>
-          <th scope="col">Boulder</th>
-        </tr>
-      </thead>
-      <tbody id="catalog-body"></tbody>
-    </table>
+      <table id="catalog-table" class="catalog-table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col" aria-sort="none" id="th-grade">
+              <button type="button" id="sort-grade">Grade<span class="sort-mark" aria-hidden="true"></span></button>
+            </th>
+            <th scope="col">Stars</th>
+            <th scope="col">Sector</th>
+            <th scope="col">Boulder</th>
+          </tr>
+        </thead>
+        <tbody id="catalog-body"></tbody>
+      </table>
+    </details>
   </section>
 </main>
 

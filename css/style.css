@@ -419,7 +419,31 @@ body.grade-v .g-font::after { content: ")"; }
 /* ---------- catalog ---------- */
 
 .catalog { padding: 3rem 0 1rem; }
-.catalog h2 { margin-bottom: 1rem; }
+
+.catalog > details { border-top: 1px solid var(--rule); }
+
+.catalog > details > summary {
+  display: flex;
+  align-items: baseline;
+  padding: 1.1rem 0;
+  cursor: pointer;
+  list-style: none;
+  min-height: 44px;
+}
+.catalog > details > summary::-webkit-details-marker { display: none; }
+
+.catalog h2 { margin-bottom: 0; }
+.catalog h2::before {
+  content: "+";
+  display: inline-block;
+  width: 1.1em;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 0.8em;
+}
+.catalog > details[open] h2::before { content: "–"; }
+
+.catalog > details[open] > summary { margin-bottom: 1rem; }
 
 .filters {
   display: grid;
