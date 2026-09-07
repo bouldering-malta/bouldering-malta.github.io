@@ -1,0 +1,109 @@
+name: New problem
+description: Add a boulder problem to the guide, or correct one that is already there.
+title: "New problem: "
+labels: ["new problem"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for adding to the guide. Everything here goes into `data/data.json`
+        and is published under CC0 — public domain, free for anyone to reuse.
+
+        Not on GitHub, or would rather not be? Email
+        [boulderingmalta@gmail.com](mailto:boulderingmalta@gmail.com) instead.
+
+  - type: input
+    id: sector
+    attributes:
+      label: Sector
+      description: The crag or area. If it is not in the guide yet, say so.
+      placeholder: Għar Ħasan
+    validations:
+      required: true
+
+  - type: input
+    id: boulder
+    attributes:
+      label: Boulder
+      description: Which block or wall the problem is on.
+      placeholder: The Cave Block
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Problem name
+      placeholder: Sirocco
+    validations:
+      required: true
+
+  - type: input
+    id: grade-font
+    attributes:
+      label: Grade (Font)
+      description: Fontainebleau scale — 3 to 9A.
+      placeholder: 6B+
+    validations:
+      required: true
+
+  - type: input
+    id: grade-v
+    attributes:
+      label: Grade (V)
+      description: Leave blank and we will convert it from the Font grade.
+      placeholder: V4
+
+  - type: dropdown
+    id: start
+    attributes:
+      label: Start
+      options:
+        - sit
+        - stand
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stars
+    attributes:
+      label: Stars
+      description: How good is it, out of three?
+      options:
+        - "0"
+        - "1"
+        - "2"
+        - "3"
+    validations:
+      required: true
+
+  - type: input
+    id: fa
+    attributes:
+      label: First ascent
+      description: Name and year, if known. Leave blank if not.
+      placeholder: A. Borg, 2019
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: The line, the movement, anything worth warning people about.
+      placeholder: Start matched on the low rail, pull through the roof on two pockets and finish up the arête.
+
+  - type: textarea
+    id: topo
+    attributes:
+      label: Topo or photos
+      description: Drag images in here. Say who took them so they can be credited.
+
+  - type: checkboxes
+    id: licence
+    attributes:
+      label: Licence
+      options:
+        - label: >
+            I understand this content is published under CC0 1.0 — anyone may reuse it,
+            commercially, without credit, and this cannot be revoked. Credits are shown
+            as a courtesy, not a condition.
+          required: true

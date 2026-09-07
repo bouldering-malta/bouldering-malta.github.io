@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>data.json editor — Bouldering Malta</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="editor.css">
+</head>
+<body>
+
+<p id="remote-banner" class="banner banner-remote" hidden>
+  Local authoring tool — no effect on the published site. Run it from
+  <code>localhost</code> to edit <code>data.json</code>.
+</p>
+
+<p id="unsupported" class="banner banner-stop" hidden>
+  This editor needs the File System Access API, which only Chrome and Edge implement.
+  Open it in one of those.
+</p>
+
+<header class="topbar">
+  <h1>data.json</h1>
+
+  <div class="file-controls">
+    <button type="button" id="open-file" class="btn btn-primary">Open data.json</button>
+    <button type="button" id="reconnect" class="btn" hidden>Reconnect</button>
+    <span id="file-name" class="file-name"></span>
+  </div>
+</header>
+
+<p id="error-banner" class="banner banner-error" hidden>
+  <span id="error-count" class="error-count"></span> — not saved to disk.
+  <span class="banner-hint">Fix these and the file writes itself.</span>
+</p>
+<ul id="error-list" class="error-list" hidden></ul>
+
+<p id="notice" class="banner banner-notice" hidden>
+  <span id="notice-text"></span>
+  <button type="button" id="notice-dismiss" class="btn btn-quiet">Dismiss</button>
+</p>
+
+<main class="panes" id="panes" hidden>
+
+  <nav class="pane pane-tree" aria-label="Guide structure">
+    <div id="tree" class="tree" role="tree" aria-label="Sectors, boulders and climbs" tabindex="0"></div>
+    <button type="button" class="add-btn" data-add="sector">+ Add sector</button>
+  </nav>
+
+  <section class="pane pane-form" aria-label="Fields">
+    <nav id="breadcrumb" class="breadcrumb" aria-label="Breadcrumb"></nav>
+    <div id="form" class="form"></div>
+  </section>
+
+  <aside class="pane pane-preview" aria-label="Preview">
+    <h2 class="pane-heading">Preview</h2>
+    <iframe id="preview" class="preview-frame" title="Live preview of the selected item"></iframe>
+  </aside>
+
+</main>
+
+<p id="empty-state" class="empty-state">
+  Open <code>data/data.json</code> to start. The file handle is remembered, so this
+  is a once-per-machine step.
+</p>
+
+<footer class="statusbar" id="statusbar" hidden>
+  <span id="st-save" class="st">Not opened</span>
+  <span id="st-errors" class="st"></span>
+  <span id="st-version" class="st"></span>
+  <span id="st-climbs" class="st"></span>
+</footer>
+
+<dialog id="confirm-dialog" class="dialog">
+  <form method="dialog">
+    <h2 id="confirm-title">Delete</h2>
+    <p id="confirm-body"></p>
+    <p class="dialog-warn">
+      There is no undo beyond <code>git checkout data/data.json</code>.
+    </p>
+    <menu>
+      <button type="submit" value="cancel" class="btn">Cancel</button>
+      <button type="submit" value="delete" class="btn btn-danger" id="confirm-go">Delete</button>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="move-dialog" class="dialog">
+  <form method="dialog">
+    <h2>Move to…</h2>
+    <p id="move-body"></p>
+    <label for="move-target">Destination</label>
+    <select id="move-target"></select>
+    <menu>
+      <button type="submit" value="cancel" class="btn">Cancel</button>
+      <button type="submit" value="move" class="btn btn-primary">Move</button>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="draft-dialog" class="dialog">
+  <form method="dialog">
+    <h2>Unsaved draft found</h2>
+    <p>
+      A draft held in this browser differs from the file on disk. It was left
+      behind by an edit that could not be saved because it had validation errors.
+    </p>
+    <p id="draft-times" class="dialog-meta"></p>
+    <menu>
+      <button type="submit" value="discard" class="btn">Discard draft</button>
+      <button type="submit" value="restore" class="btn btn-primary">Restore draft</button>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="stale-dialog" class="dialog">
+  <form method="dialog">
+    <h2>File changed on disk</h2>
+    <p id="stale-body"></p>
+    <menu>
+      <button type="submit" value="cancel" class="btn">Keep the disk version</button>
+      <button type="submit" value="overwrite" class="btn btn-danger">Overwrite with my edits</button>
+    </menu>
+  </form>
+</dialog>
+
+<script type="module" src="editor.js"></script>
+</body>
+</html>

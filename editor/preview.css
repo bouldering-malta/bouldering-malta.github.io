@@ -1,0 +1,38 @@
+/* Preview pane styling.
+
+   The preview runs in an iframe that loads the site's real ../css/style.css,
+   so what you see is the site's own CSS rather than a second copy of it that
+   drifts. This file holds only what the pane needs on top of that: the site
+   styles assume a whole page, and the preview shows one node out of context.
+
+   Nothing here should restyle the guide. If a rule in here changes how a
+   climb, boulder or sector *looks*, it belongs in ../css/style.css instead. */
+
+body {
+  padding: 0.9rem 1rem 2rem;
+  margin: 0;
+}
+
+/* The site collapses sectors on load. In the preview that would show an empty
+   pane, so a previewed sector is always expanded. */
+.sector { border-top: 0; }
+.sector > summary { display: none; }
+.sector:last-of-type { border-bottom: 0; }
+
+/* Controls that only make sense on the real page. */
+.print-sector,
+.copy-link { display: none !important; }
+
+/* Marks the node you have selected when it is shown in context — a climb
+   inside its boulder's list, for instance. */
+.preview-focus {
+  background: var(--accent-soft, #e3ece9);
+  box-shadow: -0.5rem 0 0 var(--accent-soft, #e3ece9), 0.5rem 0 0 var(--accent-soft, #e3ece9);
+  border-radius: 2px;
+}
+
+.preview-empty {
+  color: #565b5a;
+  font-size: 0.9rem;
+  font-style: italic;
+}

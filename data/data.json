@@ -4,7 +4,7 @@
     "contactEmail": "boulderingmalta@gmail.com",
     "version": "2026-09-07",
     "updated": "2026-09-07",
-    "githubRepo": "your-username/bouldering-malta",
+    "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
       "src": "images/hero/ghar-hassan-dawn.jpg",
       "alt": "Placeholder hero image — sea cliffs and boulders at Għar Ħasan",
@@ -18,7 +18,10 @@
       "description": "Placeholder sector description. Two or three sentences on the character of the rock, the style of climbing, and any history worth knowing. Globigerina limestone with pockets and rounded breaks; steep near the cave mouth, slabbier as you walk east. Dries fast after rain but goes greasy in the afternoon sun from May onwards.",
       "approach": "Placeholder approach notes. From the parking area, follow the track south past the chapel for roughly 300m, then drop left down the stepped path towards the cave mouth. Ten to twelve minutes at a walk. The last thirty metres are loose — go one at a time if there is a group.",
       "parking": "Placeholder parking notes. Room for six or seven cars on the gravel pull-in at the end of the surfaced road. Do not block the farm gate. No shade, no facilities, nearest water is in Birżebbuġa.",
-      "coords": { "lat": 35.8206, "lng": 14.5461 },
+      "coords": {
+        "lat": 35.8206,
+        "lng": 14.5461
+      },
       "mapUrl": "https://maps.google.com/?q=35.8206,14.5461",
       "boulders": [
         {
@@ -33,12 +36,16 @@
           "climbs": [
             {
               "name": "Sirocco",
+              "slug": "sirocco",
               "gradeFont": "6B+",
               "gradeV": "V4",
               "stars": 3,
               "start": "sit",
               "description": "Placeholder climb description. Start matched on the low rail, pull through the roof on two pockets and finish up the arête. The heel beta is worth the effort.",
-              "fa": { "name": "A. Borg", "year": 2019 },
+              "fa": {
+                "name": "A. Borg",
+                "year": 2019
+              },
               "photos": [
                 {
                   "src": "images/photos/sirocco-01.jpg",
@@ -54,15 +61,20 @@
             },
             {
               "name": "Salt Line",
+              "slug": "salt-line",
               "gradeFont": "6A",
               "gradeV": "V3",
               "stars": 2,
               "start": "stand",
               "description": "Placeholder climb description. Straight up the centre of the face on flat edges. Reachy through the middle.",
-              "fa": { "name": "M. Vella", "year": 2018 }
+              "fa": {
+                "name": "M. Vella",
+                "year": 2018
+              }
             },
             {
               "name": "Ħass",
+              "slug": "hass",
               "gradeFont": "5+",
               "gradeV": "V1",
               "stars": 1,
@@ -70,12 +82,16 @@
             },
             {
               "name": "Back Pocket",
+              "slug": "back-pocket",
               "gradeFont": "7A",
               "gradeV": "V6",
               "stars": 2,
               "start": "sit",
               "description": "Placeholder climb description. The sit start into Salt Line via the undercut. Bring a second pad for the sloping landing.",
-              "fa": { "name": "A. Borg", "year": 2021 }
+              "fa": {
+                "name": "A. Borg",
+                "year": 2021
+              }
             }
           ]
         },
@@ -91,6 +107,7 @@
           "climbs": [
             {
               "name": "Low Tide",
+              "slug": "low-tide",
               "gradeFont": "5",
               "gradeV": "V0+",
               "stars": 1,
@@ -99,12 +116,16 @@
             },
             {
               "name": "Grigal",
+              "slug": "grigal",
               "gradeFont": "6C",
               "gradeV": "V5",
               "stars": 3,
               "start": "sit",
               "description": "Placeholder climb description. Powerful moves off the low crimps into a long pull for the break, then easy ground.",
-              "fa": { "name": "J. Camilleri", "year": 2020 },
+              "fa": {
+                "name": "J. Camilleri",
+                "year": 2020
+              },
               "photos": [
                 {
                   "src": "images/photos/grigal-01.jpg",
@@ -115,6 +136,7 @@
             },
             {
               "name": "The Crack",
+              "slug": "the-crack",
               "gradeFont": "6A+",
               "gradeV": "V3",
               "stars": 2,
@@ -122,12 +144,16 @@
             },
             {
               "name": "Xlokk",
+              "slug": "xlokk",
               "gradeFont": "7B+",
               "gradeV": "V8",
               "stars": 3,
               "start": "sit",
               "description": "Placeholder climb description. The hardest thing on the wall. Two hard moves off the ground, then a committing slap to the rounded top.",
-              "fa": { "name": "A. Borg", "year": 2023 }
+              "fa": {
+                "name": "A. Borg",
+                "year": 2023
+              }
             },
             {
               "name": "Salt Line",
@@ -152,6 +178,7 @@
           "climbs": [
             {
               "name": "Warm-Up Traverse",
+              "slug": "warm-up-traverse",
               "gradeFont": "4+",
               "gradeV": "V0",
               "stars": 1,
@@ -160,11 +187,15 @@
             },
             {
               "name": "Limestone Dust",
+              "slug": "limestone-dust",
               "gradeFont": "6C+",
               "gradeV": "V5",
               "stars": 2,
               "start": "sit",
-              "fa": { "name": "M. Vella", "year": 2022 }
+              "fa": {
+                "name": "M. Vella",
+                "year": 2022
+              }
             }
           ]
         }
