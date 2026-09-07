@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-07T10:57:15Z",
+    "version": "2026-09-07T11:11:31Z",
     "updated": "2026-09-07",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -15,19 +15,19 @@
     {
       "id": "ghar-hassan",
       "name": "Għar Ħasan",
-      "description": "Placeholder sector description. Two or three sentences on the character of the rock, the style of climbing, and any history worth knowing. Globigerina limestone with pockets and rounded breaks; steep near the cave mouth, slabbier as you walk east. Dries fast after rain but goes greasy in the afternoon sun from May onwards.",
-      "approach": "Placeholder approach notes. From the parking area, follow the track south past the chapel for roughly 300m, then drop left down the stepped path towards the cave mouth. Ten to twelve minutes at a walk. The last thirty metres are loose — go one at a time if there is a group.",
-      "parking": "Placeholder parking notes. Room for six or seven cars on the gravel pull-in at the end of the surfaced road. Do not block the farm gate. No shade, no facilities, nearest water is in Birżebbuġa.",
+      "description": "This sector holds a great variety of boulders ranging from V0- to V4. Landings generally good due to flat ground. The entire crag is one large terrace, very hard to miss.",
+      "approach": "Follow the path along the cliffs, after a tiny scramble down you will see the crag on your left.",
+      "parking": "Park in the layby cat the start of a path along the cliffs down towards Ghar Hassan.\n\nhttps://maps.app.goo.gl/6bdUNK97FAeqpGVDA",
       "coords": {
-        "lat": 35.8206,
-        "lng": 14.5461
+        "lat": 35.807346,
+        "lng": 14.524589
       },
-      "mapUrl": "https://maps.google.com/?q=35.8206,14.5461",
+      "mapUrl": "https://maps.google.com/?q=35.807346,14.524589",
       "boulders": [
         {
           "id": "the-terrace",
           "name": "Test Boulder",
-          "description": "Placeholder boulder description. Flat platform above the main path with two short problems and a good warm-up traverse. Shade all afternoon.",
+          "description": "The first terrace of boulders reached when entering the crag.",
           "topo": {
             "src": "images/topos/hassan-topo-1.png",
             "alt": "Topo of The Terrace showing two numbered lines and the traverse",
@@ -35,17 +35,58 @@
           },
           "climbs": [
             {
-              "name": "Test Climb please work.",
+              "name": "Walk Unafraid",
               "slug": "warm-up-traverse",
-              "gradeFont": "4+",
-              "gradeV": "V0",
-              "stars": 3,
+              "gradeFont": "3",
+              "gradeV": "VB",
+              "stars": 0,
               "start": "stand",
-              "description": "Literally the best climb of all time",
-              "fa": {
-                "name": "Your boy Ed Martin",
-                "year": 2026
-              }
+              "description": "The wall just left of the scrappy corner"
+            },
+            {
+              "name": "Curl Up and Die",
+              "slug": "curl-up-and-die",
+              "gradeFont": "3",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand",
+              "description": "The scrappy corner"
+            },
+            {
+              "name": "Cuts Both Ways",
+              "slug": "cuts-both-ways",
+              "gradeFont": "5+",
+              "gradeV": "V2",
+              "stars": 1,
+              "start": "stand",
+              "description": "The diagonal crack through the overhand just right."
+            },
+            {
+              "name": "Mad Hackers",
+              "slug": "mad-hackers",
+              "gradeFont": "6A",
+              "gradeV": "V3",
+              "stars": 1,
+              "start": "stand",
+              "description": "The overhand just right past the heart shaped scoop."
+            },
+            {
+              "name": "Wagner's Ring",
+              "slug": "wagner-s-ring",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 1,
+              "start": "stand",
+              "description": "Start at the same point as Mad Hackers, move diagonally right past the roof hole."
+            },
+            {
+              "name": "Daysleeper",
+              "slug": "daysleeper",
+              "gradeFont": "3",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand",
+              "description": "Diagonal roof crack just right of the roof hole."
             }
           ]
         }
