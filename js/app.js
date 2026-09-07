@@ -323,6 +323,38 @@ function wireLightbox() {
 
 /* ------------------------------------------------------------------ print */
 
+/* Topos are lazy-loaded, so a sector that has never been scrolled into view has
+   never fetched its images. Force-opening its <details> does not load them
+   synchronously either, so printing straight away yields a PDF with the topos
+   missing. Wait for them first.
+
+   Action photos are skipped: print.css hides them, and they are the heavy ones. */
+function topoImagesReady(sectors) {
+  var images = [];
+
+  sectors.forEach(function (sector) {
+    if (!sector.classList.contains("print-target")) return;
+    Array.prototype.forEach.call(sector.querySelectorAll("figure img"), function (img) {
+      if (!img.closest(".climb-photos")) images.push(img);
+    });
+  });
+
+  var loading = images.map(function (img) {
+    img.loading = "eager";
+    if (img.complete) return null;
+    return new Promise(function (resolve) {
+      img.addEventListener("load", resolve, { once: true });
+      img.addEventListener("error", resolve, { once: true });
+    });
+  });
+
+  // Never let one wedged image hold the print dialog hostage.
+  return Promise.race([
+    Promise.all(loading),
+    new Promise(function (resolve) { setTimeout(resolve, 10000); })
+  ]);
+}
+
 function runPrint(target) {
   var sectors = Array.prototype.slice.call(document.querySelectorAll("details.sector"));
   var previous = sectors.map(function (d) { return d.open; });
@@ -357,7 +389,7 @@ function runPrint(target) {
   };
   window.addEventListener("afterprint", restore);
 
-  window.print();
+  topoImagesReady(sectors).then(function () { window.print(); });
 }
 
 function wirePrint() {
