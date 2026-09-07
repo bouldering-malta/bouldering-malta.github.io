@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-07T10:48:30Z",
+    "version": "2026-09-07T10:57:15Z",
     "updated": "2026-09-07",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -29,7 +29,7 @@
           "name": "Test Boulder",
           "description": "Placeholder boulder description. Flat platform above the main path with two short problems and a good warm-up traverse. Shade all afternoon.",
           "topo": {
-            "src": "images/topos/ghar-hassan-terrace.jpg",
+            "src": "images/topos/hassan-topo-1.png",
             "alt": "Topo of The Terrace showing two numbered lines and the traverse",
             "credit": "Photo: placeholder"
           },
