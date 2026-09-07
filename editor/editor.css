@@ -25,6 +25,11 @@
    user-agent's [hidden] rule and leave hidden panels on screen. */
 [hidden] { display: none !important; }
 
+/* The shell is exactly one viewport tall and never scrolls itself. Only the
+   panes scroll, internally. With min-height the panes' height stays indefinite,
+   the grid grows to its content, and the document becomes scrollable — which
+   lets the browser scroll the focused input back into view on every keystroke
+   while each re-render shifts it again. That reads as the page flicking. */
 body {
   margin: 0;
   background: var(--bg);
@@ -34,7 +39,9 @@ body {
   line-height: 1.5;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 h1 { font-size: 1.05rem; font-weight: 600; margin: 0; }
@@ -117,6 +124,7 @@ code { font-family: var(--mono); font-size: 0.92em; }
   display: grid;
   grid-template-columns: minmax(200px, 17rem) minmax(320px, 1fr) minmax(300px, 1.05fr);
   min-height: 0;
+  overflow: hidden;
 }
 
 .pane {
@@ -160,14 +168,16 @@ code { font-family: var(--mono); font-size: 0.92em; }
 .tree-row.is-dragging { opacity: 0.4; }
 
 .tree-twisty {
-  flex: 0 0 1rem;
+  flex: 0 0 1.25rem;
   border: 0;
   background: none;
-  padding: 0;
+  padding: 0.25rem 0;
+  margin: -0.25rem 0;
   color: var(--ink-soft);
   font: inherit;
   cursor: pointer;
   line-height: 1;
+  text-align: left;
 }
 .tree-twisty.is-leaf { visibility: hidden; }
 
@@ -361,7 +371,15 @@ legend { font-size: 0.78rem; font-weight: 600; color: var(--ink-soft); padding: 
 /* ---------- narrow ---------- */
 
 @media (max-width: 1000px) {
-  .panes { grid-template-columns: 1fr; }
+  /* Stacked, the panes no longer fit a single viewport, so this is the one
+     layout where something outside a pane is allowed to scroll. */
+  .panes {
+    grid-template-columns: 1fr;
+    /* Rows take their own height, capped below, rather than splitting one
+       viewport three ways. The container scrolls through them instead. */
+    grid-auto-rows: max-content;
+    overflow-y: auto;
+  }
   .pane { border-right: 0; border-bottom: 1px solid var(--rule); max-height: 60vh; }
   .preview-frame { min-height: 18rem; }
 }

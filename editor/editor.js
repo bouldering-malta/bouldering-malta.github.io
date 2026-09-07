@@ -484,7 +484,13 @@ function toggleExpanded(k) {
 
 function select(path) {
   state.selection = path;
+
+  // Reveal the ancestors, and open the node itself so its children are one
+  // click away. Selecting a boulder should put its climbs on screen — they are
+  // the thing you came to edit. The twisty still collapses it again.
   for (var i = 1; i < path.length; i++) state.expanded.add(key(path.slice(0, i)));
+  if (childKey(typeAt(path))) state.expanded.add(key(path));
+
   renderTree();
   renderForm();
   applyFieldMessages();
@@ -1237,23 +1243,44 @@ function groupControl(node, name, spec) {
 
 /* ------------------------------------------------------------------ messages */
 
+/* Runs on every keystroke, so it rewrites a field only when that field's
+   messages actually changed. Blindly removing and re-adding them all reflows
+   the pane under the cursor on each character. */
 function applyFieldMessages() {
+  var wanted = {};
+
+  if (state.selection && pathExists(state.selection)) {
+    (state.validation.byPath[key(state.selection)] || []).forEach(function (issue) {
+      (wanted[issue.field] = wanted[issue.field] || []).push(issue);
+    });
+  }
+
   document.querySelectorAll("#form .field").forEach(function (field) {
-    field.classList.remove("has-error");
-    field.querySelectorAll(".field-msg").forEach(function (m) { m.remove(); });
+    var issues = wanted[field.dataset.field] || [];
+    var shown = field.querySelectorAll(".field-msg");
+
+    var unchanged = shown.length === issues.length &&
+      Array.prototype.every.call(shown, function (msg, i) {
+        return msg.className === "field-msg is-" + issues[i].level &&
+          msg.textContent === issues[i].message;
+      });
+
+    if (unchanged) return;
+
+    shown.forEach(function (m) { m.remove(); });
+    issues.forEach(function (issue) {
+      var msg = document.createElement("p");
+      msg.className = "field-msg is-" + issue.level;
+      msg.textContent = issue.message;
+      field.appendChild(msg);
+    });
   });
 
-  if (!state.selection || !pathExists(state.selection)) return;
-
-  (state.validation.byPath[key(state.selection)] || []).forEach(function (issue) {
-    var field = document.querySelector('#form .field[data-field="' + issue.field + '"]');
-    if (!field) return;
-    if (issue.level === "error") field.classList.add("has-error");
-
-    var msg = document.createElement("p");
-    msg.className = "field-msg is-" + issue.level;
-    msg.textContent = issue.message;
-    field.appendChild(msg);
+  document.querySelectorAll("#form .field").forEach(function (field) {
+    var hasError = (wanted[field.dataset.field] || []).some(function (i) {
+      return i.level === "error";
+    });
+    field.classList.toggle("has-error", hasError);
   });
 }
 

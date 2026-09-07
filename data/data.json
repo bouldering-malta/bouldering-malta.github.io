@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-07",
+    "version": "2026-09-07T10:48:30Z",
     "updated": "2026-09-07",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -25,150 +25,8 @@
       "mapUrl": "https://maps.google.com/?q=35.8206,14.5461",
       "boulders": [
         {
-          "id": "cave-block",
-          "name": "The Cave Block",
-          "description": "Placeholder boulder description. The obvious detached block sitting left of the cave mouth, taking the morning shade. Flat landing on the front face, sloping and awkward round the back.",
-          "topo": {
-            "src": "images/topos/ghar-hassan-cave-block.jpg",
-            "alt": "Topo of The Cave Block showing four numbered lines on the front face",
-            "credit": "Photo: placeholder"
-          },
-          "climbs": [
-            {
-              "name": "Sirocco",
-              "slug": "sirocco",
-              "gradeFont": "6B+",
-              "gradeV": "V4",
-              "stars": 3,
-              "start": "sit",
-              "description": "Placeholder climb description. Start matched on the low rail, pull through the roof on two pockets and finish up the arête. The heel beta is worth the effort.",
-              "fa": {
-                "name": "A. Borg",
-                "year": 2019
-              },
-              "photos": [
-                {
-                  "src": "images/photos/sirocco-01.jpg",
-                  "alt": "Climber pulling through the roof on Sirocco",
-                  "credit": "Photo: placeholder"
-                },
-                {
-                  "src": "images/photos/sirocco-02.jpg",
-                  "alt": "Climber matching the finishing jug on Sirocco",
-                  "credit": "Photo: placeholder"
-                }
-              ]
-            },
-            {
-              "name": "Salt Line",
-              "slug": "salt-line",
-              "gradeFont": "6A",
-              "gradeV": "V3",
-              "stars": 2,
-              "start": "stand",
-              "description": "Placeholder climb description. Straight up the centre of the face on flat edges. Reachy through the middle.",
-              "fa": {
-                "name": "M. Vella",
-                "year": 2018
-              }
-            },
-            {
-              "name": "Ħass",
-              "slug": "hass",
-              "gradeFont": "5+",
-              "gradeV": "V1",
-              "stars": 1,
-              "start": "stand"
-            },
-            {
-              "name": "Back Pocket",
-              "slug": "back-pocket",
-              "gradeFont": "7A",
-              "gradeV": "V6",
-              "stars": 2,
-              "start": "sit",
-              "description": "Placeholder climb description. The sit start into Salt Line via the undercut. Bring a second pad for the sloping landing.",
-              "fa": {
-                "name": "A. Borg",
-                "year": 2021
-              }
-            }
-          ]
-        },
-        {
-          "id": "sea-wall",
-          "name": "Sea Wall",
-          "description": "Placeholder boulder description. The long wall running towards the water, split by an obvious crack. Best in the last two hours of light. Check the tide before committing to the low starts.",
-          "topo": {
-            "src": "images/topos/ghar-hassan-sea-wall.jpg",
-            "alt": "Topo of Sea Wall showing five numbered lines from left to right",
-            "credit": "Photo: placeholder"
-          },
-          "climbs": [
-            {
-              "name": "Low Tide",
-              "slug": "low-tide",
-              "gradeFont": "5",
-              "gradeV": "V0+",
-              "stars": 1,
-              "start": "stand",
-              "description": "Placeholder climb description. The left-hand line on big holds. A good first problem of the day."
-            },
-            {
-              "name": "Grigal",
-              "slug": "grigal",
-              "gradeFont": "6C",
-              "gradeV": "V5",
-              "stars": 3,
-              "start": "sit",
-              "description": "Placeholder climb description. Powerful moves off the low crimps into a long pull for the break, then easy ground.",
-              "fa": {
-                "name": "J. Camilleri",
-                "year": 2020
-              },
-              "photos": [
-                {
-                  "src": "images/photos/grigal-01.jpg",
-                  "alt": "Climber setting up for the long pull on Grigal",
-                  "credit": "Photo: placeholder"
-                }
-              ]
-            },
-            {
-              "name": "The Crack",
-              "slug": "the-crack",
-              "gradeFont": "6A+",
-              "gradeV": "V3",
-              "stars": 2,
-              "start": "stand"
-            },
-            {
-              "name": "Xlokk",
-              "slug": "xlokk",
-              "gradeFont": "7B+",
-              "gradeV": "V8",
-              "stars": 3,
-              "start": "sit",
-              "description": "Placeholder climb description. The hardest thing on the wall. Two hard moves off the ground, then a committing slap to the rounded top.",
-              "fa": {
-                "name": "A. Borg",
-                "year": 2023
-              }
-            },
-            {
-              "name": "Salt Line",
-              "slug": "salt-line-sea-wall",
-              "gradeFont": "6B",
-              "gradeV": "V4",
-              "stars": 1,
-              "start": "stand",
-              "description": "Placeholder climb description. Shares a name with the problem on The Cave Block, hence the explicit slug. Right-hand finish on poor slopers."
-            }
-          ]
-        },
-        {
           "id": "the-terrace",
-          "name": "The Terrace",
+          "name": "Test Boulder",
           "description": "Placeholder boulder description. Flat platform above the main path with two short problems and a good warm-up traverse. Shade all afternoon.",
           "topo": {
             "src": "images/topos/ghar-hassan-terrace.jpg",
@@ -177,24 +35,16 @@
           },
           "climbs": [
             {
-              "name": "Warm-Up Traverse",
+              "name": "Test Climb please work.",
               "slug": "warm-up-traverse",
               "gradeFont": "4+",
               "gradeV": "V0",
-              "stars": 1,
+              "stars": 3,
               "start": "stand",
-              "description": "Placeholder climb description. Left to right along the break. Feet stay low."
-            },
-            {
-              "name": "Limestone Dust",
-              "slug": "limestone-dust",
-              "gradeFont": "6C+",
-              "gradeV": "V5",
-              "stars": 2,
-              "start": "sit",
+              "description": "Literally the best climb of all time",
               "fa": {
-                "name": "M. Vella",
-                "year": 2022
+                "name": "Your boy Ed Martin",
+                "year": 2026
               }
             }
           ]
