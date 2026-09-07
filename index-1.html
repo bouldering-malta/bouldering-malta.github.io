@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Malta Bouldering</title>
+<meta name="description" content="A bouldering guide to Malta. Sectors, topos, grades and problem descriptions. Free to use, works offline.">
+<meta name="theme-color" content="#f7f6f3">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body class="grade-font">
+
+<a class="skip-link" href="#sector-index">Skip to sectors</a>
+
+<div id="update-bar" class="update-bar" hidden>
+  <span>A newer version of the guide is available.</span>
+  <button type="button" id="update-reload">Reload</button>
+</div>
+
+<header class="masthead">
+  <div id="hero" class="hero"></div>
+
+  <div class="masthead-text">
+    <h1>Malta Bouldering</h1>
+
+    <p class="contact">
+      Got a new problem, a correction, or a sector missing from here?
+      Email <a href="mailto:boulderingmalta@gmail.com" id="contact-email">boulderingmalta@gmail.com</a>
+      to get it added.
+    </p>
+    <p class="contact contact-alt">
+      With a GitHub account, you can
+      <a href="#" id="issue-link" rel="noopener">open a problem submission</a> instead.
+    </p>
+
+    <div class="grade-toggle" role="group" aria-label="Grade scale">
+      <button type="button" id="scale-font" class="is-active" aria-pressed="true">Font</button>
+      <button type="button" id="scale-v" aria-pressed="false">V</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <p id="load-error" class="load-error" hidden>
+    The guide data could not be loaded. Check your connection and reload the page.
+    If it keeps failing, email <a href="mailto:boulderingmalta@gmail.com">boulderingmalta@gmail.com</a>.
+  </p>
+
+  <nav id="sector-index" class="sector-index" aria-labelledby="sector-index-h">
+    <h2 id="sector-index-h">Sectors</h2>
+    <ol id="sector-index-list"></ol>
+    <button type="button" id="print-all" class="btn">Download full guide (PDF)</button>
+  </nav>
+
+  <div id="sectors"></div>
+
+  <section id="catalog" class="catalog" aria-labelledby="catalog-h">
+    <h2 id="catalog-h">All problems</h2>
+
+    <div class="filters">
+      <div class="filter filter-name">
+        <label for="f-name">Name</label>
+        <input type="search" id="f-name" placeholder="Search problems" autocomplete="off">
+      </div>
+      <div class="filter">
+        <label for="f-grade-from">Grade from</label>
+        <select id="f-grade-from"></select>
+      </div>
+      <div class="filter">
+        <label for="f-grade-to">Grade to</label>
+        <select id="f-grade-to"></select>
+      </div>
+      <div class="filter">
+        <label for="f-sector">Sector</label>
+        <select id="f-sector"></select>
+      </div>
+      <div class="filter">
+        <label for="f-stars">Minimum stars</label>
+        <select id="f-stars">
+          <option value="0">Any</option>
+          <option value="1">★</option>
+          <option value="2">★★</option>
+          <option value="3">★★★</option>
+        </select>
+      </div>
+      <button type="button" id="f-clear" class="btn btn-quiet">Clear filters</button>
+    </div>
+
+    <p id="result-count" class="result-count" aria-live="polite"></p>
+    <p id="no-results" class="no-results" hidden>No problems match these filters.</p>
+
+    <table id="catalog-table" class="catalog-table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col" aria-sort="none" id="th-grade">
+            <button type="button" id="sort-grade">Grade<span class="sort-mark" aria-hidden="true"></span></button>
+          </th>
+          <th scope="col">Stars</th>
+          <th scope="col">Sector</th>
+          <th scope="col">Boulder</th>
+        </tr>
+      </thead>
+      <tbody id="catalog-body"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer class="page-footer">
+  <p id="footer-meta"></p>
+  <p>
+    Corrections and new problems:
+    <a href="mailto:boulderingmalta@gmail.com">boulderingmalta@gmail.com</a>
+  </p>
+  <p class="licence">All content released under CC0 1.0 — public domain, free to reuse.</p>
+</footer>
+
+<div id="print-footer" class="print-footer" aria-hidden="true"></div>
+
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="lb-caption">
+  <button type="button" id="lb-close" class="lb-close" aria-label="Close image">&times;</button>
+  <div class="lb-stage" id="lb-stage"></div>
+  <p class="lb-caption" id="lb-caption"></p>
+</div>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>
