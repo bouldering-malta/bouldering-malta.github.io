@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-07T13:09:27Z",
+    "version": "2026-09-07T13:27:45Z",
     "updated": "2026-09-07",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -32,12 +32,14 @@
             {
               "src": "images/topos/hassan-topo-1.png",
               "alt": "Topo of Hassan Terrace, left-hand section, showing problems 1 to 6 marked in red",
-              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide"
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide",
+              "startsAt": 1
             },
             {
               "src": "images/topos/hassan-topo-2.png",
               "alt": "Topo of Hassan Terrace, right-hand section, showing problems 7 to 11 marked in red",
-              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide"
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide",
+              "startsAt": 7
             }
           ],
           "climbs": [
@@ -208,22 +210,26 @@
             {
               "src": "images/topos/jeffs-topo-1.png",
               "alt": "Topo of Jeff's Blocks 1",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007"
+              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007",
+              "startsAt": 1
             },
             {
               "src": "images/topos/jeffs-topo-2.png",
               "alt": "Topo of Jeff's Blocks 2",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007"
+              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007",
+              "startsAt": 8
             },
             {
               "src": "images/topos/jeffs-topo-3.png",
               "alt": "Topo of Jeff's Blocks 3",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007"
+              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007",
+              "startsAt": 11
             },
             {
               "src": "images/topos/jeffs-topo-4.png",
               "alt": "Topo of Jeff's Blocks 4",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007"
+              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007",
+              "startsAt": 12
             }
           ],
           "climbs": [
@@ -287,6 +293,78 @@
               "stars": 0,
               "start": "stand",
               "description": "Easily up the slab."
+            },
+            {
+              "name": "Lizard",
+              "slug": "lizard",
+              "gradeFont": "4+",
+              "gradeV": "V1",
+              "stars": 0,
+              "start": "stand",
+              "description": "Up the obvious arete and onto the easy slab above."
+            },
+            {
+              "name": "Beetle",
+              "slug": "beetle",
+              "gradeFont": "4+",
+              "gradeV": "V1",
+              "stars": 0,
+              "start": "stand",
+              "description": "Starting with a good hold, reach for the lip of the block, rockover and up the easy slab above."
+            },
+            {
+              "name": "Triton",
+              "slug": "triton",
+              "gradeFont": "5+",
+              "gradeV": "V2",
+              "stars": 0,
+              "start": "stand",
+              "description": "Mantle the slab, trending to the right then up the easy slab above."
+            },
+            {
+              "name": "Pandora",
+              "slug": "pandora",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "stand",
+              "description": "Starting to the right of the grey streak using a two finger pocket, gain some crimps then direct. Delicate and requires balance. "
+            },
+            {
+              "name": "Bla Ghadma (Boneless)",
+              "slug": "bla-ghadma-boneless-2",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "sit",
+              "description": "Starting just right of the obvious big grooves on big holds, then direct."
+            },
+            {
+              "name": "Sa I-Ghadma (To the bone)",
+              "slug": "sa-i-ghadma-to-the-bone-2",
+              "gradeFont": "6B+",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "sit",
+              "description": "Sit-start on good holds below the triangular hole to gain it, carry on direct up."
+            },
+            {
+              "name": "Heatwave",
+              "slug": "heatwave",
+              "gradeFont": "5+",
+              "gradeV": "V2",
+              "stars": 0,
+              "start": "stand",
+              "description": "Layback the right edge of the block than knee-jam the triangular hole reaching for the obvious hold above the head."
+            },
+            {
+              "name": "Block 5 Traverse",
+              "slug": "block-5-traverse",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand",
+              "description": "Facing the block a right to left traverse, exiting up the obvious left groove."
             }
           ]
         }

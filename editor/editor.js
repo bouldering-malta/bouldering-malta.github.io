@@ -803,11 +803,11 @@ function buildField(type, node, path, name, spec) {
       break;
 
     case "image":
-      control = imageControl(node[name] || (node[name] = { src: "", alt: "", credit: "" }));
+      control = imageControl(node[name] || (node[name] = { src: "", alt: "", credit: "" }), null);
       break;
 
     case "imageList":
-      control = imageListControl(node, name, type);
+      control = imageListControl(node, name, type, spec);
       break;
 
     case "group":
@@ -1082,7 +1082,7 @@ function derivedUrl(node, name) {
   return holder;
 }
 
-function imageControl(img) {
+function imageControl(img, rowFields) {
   var holder = document.createElement("div");
 
   var thumb = document.createElement("div");
@@ -1117,13 +1117,35 @@ function imageControl(img) {
 
   paint();
   holder.appendChild(thumb);
+
+  /* Extra per-row fields declared by the schema — for topos, the problem
+     number the image starts at, which is what splits the list. */
+  Object.keys(rowFields || {}).forEach(function (part) {
+    var rf = rowFields[part];
+
+    var label = document.createElement("label");
+    label.className = "hint";
+    label.textContent = rf.label;
+    holder.appendChild(label);
+
+    var input = textInput(img[part], function (v) {
+      if (v === "") delete img[part];
+      else img[part] = rf.type === "number" ? Number(v) : v;
+      changed(false);
+    }, { type: rf.type === "number" ? "number" : "text" });
+    if (rf.min !== undefined) input.min = rf.min;
+    input.style.marginTop = "0.35rem";
+    holder.appendChild(input);
+  });
+
   return holder;
 }
 
-function imageListControl(node, name, type) {
+function imageListControl(node, name, type, spec) {
   var holder = document.createElement("div");
   var list = node[name] || [];
   var one = singularLabel(type, name);
+  var rowFields = spec.rowFields;
 
   list.forEach(function (img, i) {
     var row = document.createElement("div");
@@ -1168,7 +1190,7 @@ function imageListControl(node, name, type) {
     head.appendChild(buttons);
 
     row.appendChild(head);
-    row.appendChild(imageControl(img));
+    row.appendChild(imageControl(img, rowFields));
     holder.appendChild(row);
   });
 
@@ -1178,7 +1200,13 @@ function imageListControl(node, name, type) {
   add.textContent = "+ Add " + one.toLowerCase();
   add.addEventListener("click", function () {
     if (!node[name]) node[name] = [];
-    node[name].push({ src: "", alt: "", credit: "" });
+
+    var row = { src: "", alt: "", credit: "" };
+    if (rowFields && rowFields.startsAt) {
+      var ck = childKey(type);
+      row.startsAt = node[name].length ? (node[ck] || []).length + 1 : 1;
+    }
+    node[name].push(row);
     renderForm();
     applyFieldMessages();
     changed(false);

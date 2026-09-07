@@ -30,7 +30,13 @@ export const SCHEMA = {
       id:          { type: "slug",     required: true, from: "name", pinned: true },
       name:        { type: "text",     required: true },
       description: { type: "textarea", required: true },
-      topos:       { type: "imageList", required: true, label: "Topos" }
+      topos:       { type: "imageList", required: true, label: "Topos",
+                     rowFields: {
+                       startsAt: {
+                         type: "number", label: "First problem on this topo",
+                         min: 1, ascending: true, withinChildren: true
+                       }
+                     } }
     }
   },
   climb: {
@@ -266,6 +272,32 @@ export function validateNode(type, node, siblings) {
           if (blank(img.alt)) push("error", name, one + " " + (i + 1) + " has no alt text.");
           if (blank(img.credit)) push("warning", name, one + " " + (i + 1) + " has no credit.");
         });
+
+        Object.keys(spec.rowFields || {}).forEach(function (rowName) {
+          var rf = spec.rowFields[rowName];
+          var childCount = (node[childKey(type)] || []).length;
+          var previous = null;
+
+          (value || []).forEach(function (img, i) {
+            var label = one + " " + (i + 1) + ": " + rf.label.toLowerCase();
+            if (blank(img[rowName])) return;
+
+            var n = Number(img[rowName]);
+            if (!Number.isInteger(n) || (rf.min !== undefined && n < rf.min)) {
+              push("error", name, label + " must be a whole number of at least " + rf.min + ".");
+              return;
+            }
+            if (rf.ascending && previous !== null && n <= previous) {
+              push("error", name, label + " must come after the previous " +
+                one.toLowerCase() + " (" + previous + ").");
+            }
+            if (rf.withinChildren && childCount && n > childCount) {
+              push("warning", name, label + " is " + n + ", but there are only " +
+                childCount + " problems on this boulder.");
+            }
+            previous = n;
+          });
+        });
         break;
       }
 
@@ -379,7 +411,9 @@ function serializeNode(type, node) {
         break;
 
       case "imageList":
-        if (value && value.length) out[name] = value.map(pickImage);
+        if (value && value.length) {
+          out[name] = value.map(function (img) { return pickImage(img, spec); });
+        }
         break;
 
       case "group": {
@@ -411,10 +445,15 @@ function serializeNode(type, node) {
   return out;
 }
 
-function pickImage(img) {
+function pickImage(img, spec) {
   var out = {};
   IMAGE_FIELDS.forEach(function (k) {
     if (!blank(img[k])) out[k] = img[k];
+  });
+  Object.keys((spec && spec.rowFields) || {}).forEach(function (k) {
+    if (blank(img[k])) return;
+    var rf = spec.rowFields[k];
+    out[k] = rf.type === "number" ? Number(img[k]) : img[k];
   });
   return out;
 }

@@ -129,22 +129,82 @@ export function topoList(boulder) {
   return list.filter(function (t) { return t && t.src; });
 }
 
+/* Splits a boulder into topo-then-its-problems blocks.
+
+   A long wall needs more than one photo, and a topo is only useful next to the
+   problems it actually shows. Each topo carries `startsAt`, the problem number
+   its coverage begins at, so topo 1 (problems 1-10) renders above problems
+   1-10 and topo 2 (11-20) above problems 11-20.
+
+   A topo with no usable startsAt inherits the previous one's, which stacks the
+   two together — so a file that sets none at all behaves exactly as before,
+   with every topo up front. */
+export function topoSegments(boulder) {
+  var topos = topoList(boulder);
+  var climbs = boulder.climbs || [];
+
+  if (!topos.length) {
+    return climbs.length ? [{ topos: [], climbs: climbs, start: 1 }] : [];
+  }
+
+  var starts = topos.map(function (topo, i) {
+    var n = parseInt(topo.startsAt, 10);
+    return (isFinite(n) && n >= 1) ? n : (i === 0 ? 1 : null);
+  });
+  for (var i = 1; i < starts.length; i++) {
+    if (starts[i] === null || starts[i] < starts[i - 1]) starts[i] = starts[i - 1];
+  }
+
+  // Topos sharing a start belong to one block and stack above the same problems.
+  var blocks = [];
+  topos.forEach(function (topo, i) {
+    var last = blocks[blocks.length - 1];
+    var entry = { topo: topo, index: i };
+    if (last && last.start === starts[i]) last.topos.push(entry);
+    else blocks.push({ start: starts[i], topos: [entry] });
+  });
+
+  var segments = [];
+
+  // Problems numbered below the first topo's start have no topo of their own.
+  if (blocks[0].start > 1) {
+    segments.push({ topos: [], climbs: climbs.slice(0, blocks[0].start - 1), start: 1 });
+  }
+
+  blocks.forEach(function (block, i) {
+    var next = blocks[i + 1];
+    var from = Math.min(block.start - 1, climbs.length);
+    var to = next ? Math.min(next.start - 1, climbs.length) : climbs.length;
+    segments.push({
+      topos: block.topos,
+      climbs: climbs.slice(from, Math.max(from, to)),
+      start: block.start
+    });
+  });
+
+  return segments;
+}
+
 export function boulderHtml(sector, boulder) {
   var html = '<section class="boulder" id="' + esc(sector.id + "--" + boulder.id) + '">' +
     "<h3>" + esc(boulder.name) + "</h3>";
 
   if (boulder.description) html += "<p>" + esc(boulder.description) + "</p>";
 
-  /* A boulder can carry several topos — a long wall often needs more than one
-     photo to cover a numbering sequence. They stack in array order. `topo`
-     is the pre-list shape, still accepted so a hand-edited file keeps working. */
-  topoList(boulder).forEach(function (topo, i) {
-    html += '<figure><button type="button" class="topo-btn" data-img="topo:' +
-      esc(sector.id + "--" + boulder.id) + ":" + i + '">' + mediaHtml(topo) + "</button>" +
-      "<figcaption>" + esc(topo.credit) + "</figcaption></figure>";
+  topoSegments(boulder).forEach(function (segment) {
+    segment.topos.forEach(function (entry) {
+      html += '<figure><button type="button" class="topo-btn" data-img="topo:' +
+        esc(sector.id + "--" + boulder.id) + ":" + entry.index + '">' +
+        mediaHtml(entry.topo) + "</button>" +
+        "<figcaption>" + esc(entry.topo.credit) + "</figcaption></figure>";
+    });
+
+    if (segment.climbs.length) {
+      html += '<ol class="climbs" start="' + segment.start + '">' +
+        segment.climbs.map(climbHtml).join("") + "</ol>";
+    }
   });
 
-  html += '<ol class="climbs">' + (boulder.climbs || []).map(climbHtml).join("") + "</ol>";
   return html + "</section>";
 }
 
