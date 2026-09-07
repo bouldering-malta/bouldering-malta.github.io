@@ -26,6 +26,7 @@ a { color: #000 !important; text-decoration: none; }
 /* When a print run is active, strip everything but the target sector(s) */
 body[data-print-sector] .masthead,
 body[data-print-sector] .sector-index,
+body[data-print-sector] .ack,
 body[data-print-sector] .catalog,
 body[data-print-sector] .page-footer { display: none !important; }
 

@@ -417,13 +417,27 @@ body.grade-v .g-font::after { content: ")"; }
   100% { background: transparent; }
 }
 
+/* ---------- acknowledgements ---------- */
+
+.ack { padding: 0 0 0.4rem; }
+.ack > details > summary { padding: 0.85rem 0; min-height: 0; }
+.ack h2 { font-size: 1.15rem; }
+.ack p {
+  margin: 0 0 0.9rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.ack cite { font-style: italic; }
+
 /* ---------- catalog ---------- */
 
 .catalog { padding: 3rem 0 1rem; }
 
-.catalog > details { border-top: 1px solid var(--rule); }
+.catalog > details,
+.ack > details { border-top: 1px solid var(--rule); }
 
-.catalog > details > summary {
+.catalog > details > summary,
+.ack > details > summary {
   display: flex;
   align-items: baseline;
   padding: 1.1rem 0;
@@ -431,10 +445,13 @@ body.grade-v .g-font::after { content: ")"; }
   list-style: none;
   min-height: 44px;
 }
-.catalog > details > summary::-webkit-details-marker { display: none; }
+.catalog > details > summary::-webkit-details-marker,
+.ack > details > summary::-webkit-details-marker { display: none; }
 
-.catalog h2 { margin-bottom: 0; }
-.catalog h2::before {
+.catalog h2,
+.ack h2 { margin-bottom: 0; }
+.catalog h2::before,
+.ack h2::before {
   content: "+";
   display: inline-block;
   width: 1.1em;
@@ -442,7 +459,8 @@ body.grade-v .g-font::after { content: ")"; }
   font-family: var(--sans);
   font-size: 0.8em;
 }
-.catalog > details[open] h2::before { content: "–"; }
+.catalog > details[open] h2::before,
+.ack > details[open] h2::before { content: "–"; }
 
 .catalog > details[open] > summary { margin-bottom: 1rem; }
 
