@@ -124,17 +124,25 @@ export function climbHtml(climb) {
   return html + "</div></li>";
 }
 
+export function topoList(boulder) {
+  var list = boulder.topos || (boulder.topo ? [boulder.topo] : []);
+  return list.filter(function (t) { return t && t.src; });
+}
+
 export function boulderHtml(sector, boulder) {
   var html = '<section class="boulder" id="' + esc(sector.id + "--" + boulder.id) + '">' +
     "<h3>" + esc(boulder.name) + "</h3>";
 
   if (boulder.description) html += "<p>" + esc(boulder.description) + "</p>";
 
-  if (boulder.topo && boulder.topo.src) {
+  /* A boulder can carry several topos — a long wall often needs more than one
+     photo to cover a numbering sequence. They stack in array order. `topo`
+     is the pre-list shape, still accepted so a hand-edited file keeps working. */
+  topoList(boulder).forEach(function (topo, i) {
     html += '<figure><button type="button" class="topo-btn" data-img="topo:' +
-      esc(sector.id + "--" + boulder.id) + '">' + mediaHtml(boulder.topo) + "</button>" +
-      "<figcaption>" + esc(boulder.topo.credit) + "</figcaption></figure>";
-  }
+      esc(sector.id + "--" + boulder.id) + ":" + i + '">' + mediaHtml(topo) + "</button>" +
+      "<figcaption>" + esc(topo.credit) + "</figcaption></figure>";
+  });
 
   html += '<ol class="climbs">' + (boulder.climbs || []).map(climbHtml).join("") + "</ol>";
   return html + "</section>";

@@ -30,7 +30,7 @@ export const SCHEMA = {
       id:          { type: "slug",     required: true, from: "name", pinned: true },
       name:        { type: "text",     required: true },
       description: { type: "textarea", required: true },
-      topo:        { type: "image",    required: true }
+      topos:       { type: "imageList", required: true, label: "Topos" }
     }
   },
   climb: {
@@ -102,6 +102,11 @@ export function fieldList(type) {
   });
 }
 
+/* "Topos" -> "Topo". Used for the rows of an imageList and its messages. */
+export function singularLabel(type, name) {
+  return labelFor(type, name).replace(/s$/, "");
+}
+
 export function labelFor(type, name) {
   var spec = SCHEMA[type].fields[name];
   if (spec && spec.label) return spec.label;
@@ -155,6 +160,18 @@ export function parseCoords(input) {
   if (bare) return { lat: parseFloat(bare[1]), lng: parseFloat(bare[2]) };
 
   return null;
+}
+
+/* Files written before a boulder could carry more than one topo have a single
+   `topo` object. Fold it into the list so there is one shape to reason about. */
+export function migrate(data) {
+  (data.sectors || []).forEach(function (sector) {
+    (sector.boulders || []).forEach(function (boulder) {
+      if (boulder.topo && !boulder.topos) boulder.topos = [boulder.topo];
+      delete boulder.topo;
+    });
+  });
+  return data;
 }
 
 /* ------------------------------------------------------------------ validation */
@@ -239,13 +256,18 @@ export function validateNode(type, node, siblings) {
         }
         break;
 
-      case "imageList":
+      case "imageList": {
+        var one = singularLabel(type, name);
+        if (spec.required && (!value || !value.length)) {
+          push("error", name, "At least one " + one.toLowerCase() + " is required.");
+        }
         (value || []).forEach(function (img, i) {
-          if (blank(img.src)) push("error", name, "Photo " + (i + 1) + " has no path.");
-          if (blank(img.alt)) push("error", name, "Photo " + (i + 1) + " has no alt text.");
-          if (blank(img.credit)) push("warning", name, "Photo " + (i + 1) + " has no credit.");
+          if (blank(img.src)) push("error", name, one + " " + (i + 1) + " has no path.");
+          if (blank(img.alt)) push("error", name, one + " " + (i + 1) + " has no alt text.");
+          if (blank(img.credit)) push("warning", name, one + " " + (i + 1) + " has no credit.");
         });
         break;
+      }
 
       case "group":
         if (value) {

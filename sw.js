@@ -39,7 +39,10 @@ function imagePaths(data) {
   if (data.meta && data.meta.hero && data.meta.hero.src) paths.push(data.meta.hero.src);
   (data.sectors || []).forEach(function (sector) {
     (sector.boulders || []).forEach(function (boulder) {
-      if (boulder.topo && boulder.topo.src) paths.push(boulder.topo.src);
+      var topos = boulder.topos || (boulder.topo ? [boulder.topo] : []);
+      topos.forEach(function (topo) {
+        if (topo && topo.src) paths.push(topo.src);
+      });
     });
   });
   return paths;

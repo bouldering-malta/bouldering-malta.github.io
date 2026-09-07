@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-07T11:56:32Z",
+    "version": "2026-09-07T12:14:31Z",
     "updated": "2026-09-07",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -28,11 +28,18 @@
           "id": "the-terrace",
           "name": "Hassan Terrace",
           "description": "The first terrace of boulders reached when entering the crag.",
-          "topo": {
-            "src": "images/topos/hassan-topo-1.png",
-            "alt": "Topo of The Terrace showing two numbered lines and the traverse",
-            "credit": "Photo: placeholder"
-          },
+          "topos": [
+            {
+              "src": "images/topos/hassan-topo-1.png",
+              "alt": "Topo of Hassan Terrace, left-hand section, showing problems 1 to 6 marked in red",
+              "credit": "Photo: placeholder"
+            },
+            {
+              "src": "images/topos/hassan-topo-2.png",
+              "alt": "Topo of Hassan Terrace, right-hand section, showing problems 7 to 11 marked in red",
+              "credit": "Photo: placeholder"
+            }
+          ],
           "climbs": [
             {
               "name": "Walk Unafraid",
@@ -41,7 +48,11 @@
               "gradeV": "VB",
               "stars": 0,
               "start": "stand",
-              "description": "The wall just left of the scrappy corner"
+              "description": "The wall just left of the scrappy corner",
+              "fa": {
+                "name": "John Moulding",
+                "year": 1999
+              }
             },
             {
               "name": "Curl Up and Die",
@@ -50,7 +61,11 @@
               "gradeV": "V0",
               "stars": 0,
               "start": "stand",
-              "description": "The scrappy corner"
+              "description": "The scrappy corner",
+              "fa": {
+                "name": "John Codling",
+                "year": 1999
+              }
             },
             {
               "name": "Cuts Both Ways",
@@ -59,7 +74,11 @@
               "gradeV": "V2",
               "stars": 1,
               "start": "stand",
-              "description": "The diagonal crack through the overhand just right."
+              "description": "The diagonal crack through the overhand just right.",
+              "fa": {
+                "name": "John Codling",
+                "year": 1999
+              }
             },
             {
               "name": "Mad Hackers",
@@ -68,7 +87,11 @@
               "gradeV": "V3",
               "stars": 1,
               "start": "stand",
-              "description": "The overhand just right past the heart shaped scoop."
+              "description": "The overhand just right past the heart shaped scoop.",
+              "fa": {
+                "name": "John Moulding",
+                "year": 1999
+              }
             },
             {
               "name": "Wagner's Ring",
@@ -77,7 +100,11 @@
               "gradeV": "V0",
               "stars": 1,
               "start": "stand",
-              "description": "Start at the same point as Mad Hackers, move diagonally right past the roof hole."
+              "description": "Start at the same point as Mad Hackers, move diagonally right past the roof hole.",
+              "fa": {
+                "name": "John Moulding",
+                "year": 1999
+              }
             },
             {
               "name": "Daysleeper",
@@ -86,7 +113,76 @@
               "gradeV": "V0",
               "stars": 0,
               "start": "stand",
-              "description": "Diagonal roof crack just right of the roof hole."
+              "description": "Diagonal roof crack just right of the roof hole.",
+              "fa": {
+                "name": "John Moulding",
+                "year": 1999
+              }
+            },
+            {
+              "name": "REM",
+              "slug": "rem",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand",
+              "description": "Climb the right hand edge of a low buldge. A long reach for good horizontal holds.",
+              "fa": {
+                "name": "John Moulding",
+                "year": 1999
+              }
+            },
+            {
+              "name": "Careless Whispers",
+              "slug": "careless-whispers",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 1,
+              "start": "stand",
+              "description": "The vertical crack 2m right on flat holds. ",
+              "fa": {
+                "name": "John Codling",
+                "year": 1999
+              }
+            },
+            {
+              "name": "The Apologist",
+              "slug": "the-apologist",
+              "gradeFont": "6A",
+              "gradeV": "V3",
+              "stars": 1,
+              "start": "stand",
+              "description": "Just left of the big cave is a diagonal crack, with a sloping finish. ",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 1998
+              }
+            },
+            {
+              "name": "Love Path",
+              "slug": "love-path",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "stand",
+              "description": "Half a meter right of the crack. Start using a mono with the right hand. ",
+              "fa": {
+                "name": "Jeffrey Camilleri ",
+                "year": 2001
+              }
+            },
+            {
+              "name": "Darklight",
+              "slug": "darklight",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "sit",
+              "description": "One and a half meters rights of the crack. Start using the 90 degree flake and 2 finger pocket with the right hand.   ",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2001
+              }
             }
           ]
         }

@@ -5,7 +5,7 @@
    imports, so what you see while authoring is what the site renders. */
 
 import {
-  decorate, esc, gradeHtml, starsHtml, mediaHtml, sectorHtml
+  decorate, esc, gradeHtml, starsHtml, mediaHtml, sectorHtml, topoList
 } from "./render.js";
 import { FONT_SCALE, V_SCALE } from "../shared/grades.js";
 
@@ -266,10 +266,11 @@ function findImage(key) {
   var parts = key.split(":");
   if (parts[0] === "topo") {
     var id = parts[1];
+    var index = parseInt(parts[2], 10) || 0;
     var found = null;
     state.data.sectors.forEach(function (s) {
       s.boulders.forEach(function (b) {
-        if (s.id + "--" + b.id === id) found = b.topo;
+        if (s.id + "--" + b.id === id) found = topoList(b)[index];
       });
     });
     return found;

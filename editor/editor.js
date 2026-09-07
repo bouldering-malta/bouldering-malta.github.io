@@ -11,7 +11,8 @@
 
 import {
   SCHEMA, slugify, keyField, childKey, childType, fieldList,
-  labelFor, blankNode, mapUrlFor, parseCoords, validateData, toJson
+  labelFor, singularLabel, blankNode, mapUrlFor, parseCoords, migrate,
+  validateData, toJson
 } from "../shared/schema.js";
 import { FONT_SCALE, V_SCALE, vForFont } from "../shared/grades.js";
 import { decorate, boulderHtml, sectorHtml } from "../js/render.js";
@@ -171,7 +172,7 @@ function mtimeLabel() {
 }
 
 function adopt(data) {
-  state.data = data;
+  state.data = migrate(data);
   state.selection = data.sectors && data.sectors.length ? [0] : null;
   if (state.selection) state.expanded.add(key(state.selection));
 
@@ -806,7 +807,7 @@ function buildField(type, node, path, name, spec) {
       break;
 
     case "imageList":
-      control = imageListControl(node, name);
+      control = imageListControl(node, name, type);
       break;
 
     case "group":
@@ -1119,9 +1120,10 @@ function imageControl(img) {
   return holder;
 }
 
-function imageListControl(node, name) {
+function imageListControl(node, name, type) {
   var holder = document.createElement("div");
   var list = node[name] || [];
+  var one = singularLabel(type, name);
 
   list.forEach(function (img, i) {
     var row = document.createElement("div");
@@ -1131,7 +1133,7 @@ function imageListControl(node, name) {
     head.className = "photo-row-head";
 
     var title = document.createElement("span");
-    title.textContent = "Photo " + (i + 1);
+    title.textContent = one + " " + (i + 1);
     head.appendChild(title);
 
     var buttons = document.createElement("span");
@@ -1173,7 +1175,7 @@ function imageListControl(node, name) {
   var add = document.createElement("button");
   add.type = "button";
   add.className = "add-btn";
-  add.textContent = "+ Add photo";
+  add.textContent = "+ Add " + one.toLowerCase();
   add.addEventListener("click", function () {
     if (!node[name]) node[name] = [];
     node[name].push({ src: "", alt: "", credit: "" });
