@@ -9,11 +9,6 @@
   --accent: #0b5e5a;
   --accent-soft: #e3ece9;
 
-  /* image placeholders — baby blue stand-ins for topos, photos, hero */
-  --placeholder: #bedff0;
-  --placeholder-deep: #a6d3ea;
-  --placeholder-ink: #2f5468;
-
   /* grade ramp: one hue family, easy (muted) to hard (saturated, dark) */
   --g1: #5c6867;
   --g2: #46706d;
@@ -172,22 +167,28 @@ main {
   border-color: var(--accent);
 }
 
-/* ---------- image placeholders ---------- */
+/* ---------- images ---------- */
 
-.ph-box {
-  background: var(--placeholder);
-  color: var(--placeholder-ink);
+/* Anything that will not load shows its alt text in a plain outlined box
+   instead of the browser's broken-image glyph. */
+img.is-missing {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  min-height: 9rem;
   padding: 1rem;
+  border: 1px dashed var(--rule);
+  color: var(--ink-soft);
   font-size: 0.82rem;
   line-height: 1.35;
+  font-style: italic;
 }
-.ph-box span { max-width: 26rem; }
 
-.hero .ph-box { aspect-ratio: 16 / 9; }
+.hero img { display: block; width: 100%; height: auto; }
+/* A missing hero stays a compact strip. Holding open a 16:9 void at the top of
+   the page is worse than saying nothing. */
+.hero img.is-missing { min-height: 5rem; }
 .hero-credit {
   margin: 0.35rem var(--pad) 0;
   font-size: 0.78rem;
@@ -205,7 +206,7 @@ figure img { display: block; width: 100%; height: auto; }
   background: none;
   cursor: zoom-in;
 }
-.topo-btn .ph-box { aspect-ratio: 4 / 3; }
+.topo-btn img.is-missing { aspect-ratio: 4 / 3; }
 
 figcaption {
   font-size: 0.8rem;
@@ -381,7 +382,7 @@ figcaption {
   margin-top: 0.7rem;
 }
 .climb-photos figure { margin: 0; width: 8.5rem; }
-.climb-photos .ph-box { aspect-ratio: 3 / 4; font-size: 0.7rem; }
+.climb-photos img.is-missing { aspect-ratio: 3 / 4; font-size: 0.7rem; min-height: 0; }
 .climb-photos figcaption { font-size: 0.72rem; }
 
 /* grade display — both scales in the DOM, inactive one bracketed */
@@ -545,7 +546,7 @@ body.grade-v .g-font::after { content: ")"; }
   max-width: 100%;
   height: auto;
 }
-.lb-stage .ph-box {
+.lb-stage img.is-missing {
   width: min(90vw, 60rem);
   aspect-ratio: 4 / 3;
   font-size: 0.95rem;

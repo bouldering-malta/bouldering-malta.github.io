@@ -54,8 +54,7 @@ body[data-print-sector] .sector-name::before { content: none; }
 
 .topo-btn { cursor: default; }
 figure img { max-width: 100%; }
-.topo-btn .ph-box,
-figure .ph-box {
+img.is-missing {
   border: 0.5pt solid #000;
   background: #fff !important;
   color: #000 !important;

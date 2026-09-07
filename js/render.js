@@ -6,10 +6,6 @@
 import { slugify } from "../shared/schema.js";
 import { FONT_SCALE, V_SCALE, gradeBand } from "../shared/grades.js";
 
-/* Swap to false once real topos and photos are in /images/.
-   true renders baby-blue placeholder boxes carrying the alt text. */
-export const options = { placeholderImages: true };
-
 export function esc(s) {
   return String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -91,12 +87,14 @@ export function gradeHtml(climb) {
     "</span>";
 }
 
+/* A file that fails to load falls back to its own alt text in a plain outlined
+   box (see img.is-missing in style.css) rather than the browser's broken-image
+   glyph, so a not-yet-added topo still reads as something deliberate. */
 export function mediaHtml(img, cls) {
   if (!img || !img.src) return "";
-  if (options.placeholderImages) {
-    return '<div class="ph-box ' + (cls || "") + '"><span>' + esc(img.alt) + "</span></div>";
-  }
-  return '<img src="' + esc(img.src) + '" alt="' + esc(img.alt) + '" loading="lazy">';
+  return '<img' + (cls ? ' class="' + cls + '"' : "") +
+    ' src="' + esc(img.src) + '" alt="' + esc(img.alt) + '" loading="lazy"' +
+    " onerror=\"this.classList.add('is-missing')\">";
 }
 
 /* ------------------------------------------------------------------ nodes */

@@ -1345,10 +1345,15 @@ function showNotice(text) {
 
 /* ------------------------------------------------------------------ preview */
 
+/* srcdoc resolves relative URLs against this page, so image paths written the
+   way the site uses them ("images/topos/x.png") would look for /editor/images/.
+   The base tag points the preview at the site root instead, which is also why
+   the stylesheet hrefs below are written from there. */
 var PREVIEW_DOC =
   '<!doctype html><html><head><meta charset="utf-8">' +
-  '<link rel="stylesheet" href="../css/style.css">' +
-  '<link rel="stylesheet" href="preview.css">' +
+  '<base href="../">' +
+  '<link rel="stylesheet" href="css/style.css">' +
+  '<link rel="stylesheet" href="editor/preview.css">' +
   '</head><body class="grade-font"></body></html>';
 
 function initPreview() {
