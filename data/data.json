@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-09T11:59:11Z",
+    "version": "2026-09-09T12:17:13Z",
     "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -771,8 +771,102 @@
         {
           "id": "dahlet-qorrot-boulder",
           "name": "Dahlet Qorrot Boulder",
-          "description": "show me the cat",
-          "climbs": []
+          "topos": [
+            {
+              "src": "images/topos/dahlet-qorrot-topo.png",
+              "alt": "images/topos/dahlet-qorrot-topo.png",
+              "credit": "Malta Rock Climbing - The Comprehensive Guide (2007)",
+              "startsAt": 1
+            }
+          ],
+          "climbs": [
+            {
+              "name": "Arachnophobia",
+              "slug": "arachnophobia",
+              "gradeFont": "6A",
+              "gradeV": "V3",
+              "stars": 0,
+              "start": "stand",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2003
+              }
+            },
+            {
+              "name": "Edge of Destiny",
+              "slug": "edge-of-destiny",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "stand",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2000
+              }
+            },
+            {
+              "name": "Aenima",
+              "slug": "aenima",
+              "gradeFont": "6C",
+              "gradeV": "V5",
+              "stars": 0,
+              "start": "stand",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2000
+              }
+            },
+            {
+              "name": "Bartmove Zonder Instapsteen",
+              "slug": "bartmove-zonder-instapsteen",
+              "gradeFont": "6C",
+              "gradeV": "V5",
+              "stars": 0,
+              "start": "stand",
+              "fa": {
+                "name": "Bart van Raajj",
+                "year": 2001
+              }
+            },
+            {
+              "name": "Big Lobster Traverse",
+              "slug": "big-lobster-traverse",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "stand",
+              "fa": {
+                "name": "Bart van Raajj",
+                "year": 2001
+              }
+            }
+          ]
+        },
+        {
+          "id": "new-boulder",
+          "name": "Boulder by the Sea",
+          "topos": [
+            {
+              "src": "images/topos/dahlet-qorrot-topo-2.png",
+              "alt": "images/topos/dahlet-qorrot-topo-2.png",
+              "credit": "Malta Rock Climbing - The Comprehensive Guide (2007)",
+              "startsAt": 1
+            }
+          ],
+          "climbs": [
+            {
+              "name": "Sueno di Serpente",
+              "slug": "sueno-di-serpente",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2009
+              }
+            }
+          ]
         }
       ]
     }
