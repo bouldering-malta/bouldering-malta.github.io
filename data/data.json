@@ -2,8 +2,8 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-07T13:27:45Z",
-    "updated": "2026-09-07",
+    "version": "2026-09-09T07:55:58Z",
+    "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
       "src": "images/hero/ghar-hassan-dawn.jpg",
@@ -40,6 +40,12 @@
               "alt": "Topo of Hassan Terrace, right-hand section, showing problems 7 to 11 marked in red",
               "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide",
               "startsAt": 7
+            },
+            {
+              "src": "images/topos/hassan-topo-3.png",
+              "alt": "images/topos/hassan-topo-3.png",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide",
+              "startsAt": 12
             }
           ],
           "climbs": [
@@ -185,6 +191,78 @@
                 "name": "Jeffrey Camilleri",
                 "year": 2001
               }
+            },
+            {
+              "name": "Dragonflight",
+              "slug": "dragonflight",
+              "gradeFont": "6A",
+              "gradeV": "V3",
+              "stars": 2,
+              "start": "stand",
+              "description": "From the slot move left to black flowstone then a hand traverse line left to the undercut prow, up this."
+            },
+            {
+              "name": "Point Break",
+              "slug": "point-break",
+              "gradeFont": "5+",
+              "gradeV": "V2",
+              "stars": 2,
+              "start": "stand",
+              "description": "Using the slot for the right, gain the black flowstone with the left and then the good flat hold above. Continue up."
+            },
+            {
+              "name": "Point Five",
+              "slug": "point-five",
+              "gradeFont": "5+",
+              "gradeV": "V2",
+              "stars": 2,
+              "start": "stand",
+              "description": "The easiest combination, from the slot with your right hand gain the flat hold direct with your left. Push for a jug high right. Slap up left."
+            },
+            {
+              "name": "Falls to Climb",
+              "slug": "falls-to-climb",
+              "gradeFont": "5+",
+              "gradeV": "V2",
+              "stars": 1,
+              "start": "stand",
+              "description": "Get the high jug via moves to the right of the slot."
+            },
+            {
+              "name": "The Leopard",
+              "slug": "the-leopard",
+              "gradeFont": "5+",
+              "gradeV": "V2",
+              "stars": 0,
+              "start": "stand",
+              "description": "Using hidden holds in the horizontal break. Dyno to a good jug up and left."
+            },
+            {
+              "name": "Firehouse",
+              "slug": "firehouse",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 2,
+              "start": "stand",
+              "description": "The overhand breached by two superb cracks. This is the left hand. "
+            },
+            {
+              "name": "Up",
+              "slug": "up",
+              "gradeFont": "4+",
+              "gradeV": "V1",
+              "stars": 1,
+              "start": "stand",
+              "description": "Through the roof in the centre."
+            },
+            {
+              "name": "Oddfellows",
+              "slug": "oddfellows",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 2,
+              "start": "stand",
+              "description": "The right hand crack."
             }
           ]
         }
@@ -194,7 +272,7 @@
       "id": "wied-il-ghasel-mosta-valley",
       "name": "Wied il-Għasel - Mosta Valley",
       "description": "Wied il-Għasel (Honey Valley in English)",
-      "approach": "something",
+      "approach": "After parking next to the bus stop, cross the road via the traffic lights towards the valley. Go over the paved path and on to a dirt track, follow this down towards the base of the valley.",
       "parking": "Parking is best by the bus stop and traffic lights directly before the path down to the crag.\n\nhttps://maps.app.goo.gl/NmAChqQBpf1pqVxF7",
       "coords": {
         "lat": 35.92039,
@@ -205,7 +283,7 @@
         {
           "id": "jeff-s-blocks",
           "name": "Jeff's Blocks",
-          "description": "something",
+          "description": "The first boulder is the large boulder in the riverbed, 150m upstream from the old bridge. The other boulders are further downstream. 'Block 5' in the topo is 10m away from 'Block 1' ",
           "topos": [
             {
               "src": "images/topos/jeffs-topo-1.png",
@@ -300,7 +378,7 @@
               "gradeFont": "4+",
               "gradeV": "V1",
               "stars": 0,
-              "start": "stand",
+              "start": "sit",
               "description": "Up the obvious arete and onto the easy slab above."
             },
             {
@@ -309,7 +387,7 @@
               "gradeFont": "4+",
               "gradeV": "V1",
               "stars": 0,
-              "start": "stand",
+              "start": "sit",
               "description": "Starting with a good hold, reach for the lip of the block, rockover and up the easy slab above."
             },
             {
@@ -336,7 +414,7 @@
               "gradeFont": "4",
               "gradeV": "V0",
               "stars": 0,
-              "start": "sit",
+              "start": "stand",
               "description": "Starting just right of the obvious big grooves on big holds, then direct."
             },
             {
