@@ -17,7 +17,8 @@
       "name": "Għar Ħasan",
       "description": "This sector holds a great variety of boulders ranging from V0- to V4. Landings generally good due to flat ground. The entire crag is one large terrace, very hard to miss.",
       "approach": "Follow the path along the cliffs, after a tiny scramble down you will see the crag on your left.",
-      "parking": "Park in the layby cat the start of a path along the cliffs down towards Ghar Hassan.\n\nhttps://maps.app.goo.gl/6bdUNK97FAeqpGVDA",
+      "parking": "Park in the layby cat the start of a path along the cliffs down towards Ghar Hassan.",
+      "parkingUrl": "https://maps.app.goo.gl/6bdUNK97FAeqpGVDA",
       "coords": {
         "lat": 35.807346,
         "lng": 14.524589
@@ -301,7 +302,8 @@
       "name": "Wied il-Għasel - Mosta Valley",
       "description": "Wied il-Għasel (Honey Valley in English)",
       "approach": "After parking next to the bus stop, cross the road via the traffic lights towards the valley. Go over the paved path and on to a dirt track, follow this down towards the base of the valley.",
-      "parking": "Parking is best by the bus stop and traffic lights directly before the path down to the crag.\n\nhttps://maps.app.goo.gl/NmAChqQBpf1pqVxF7",
+      "parking": "Parking is best by the bus stop and traffic lights directly before the path down to the crag.",
+      "parkingUrl": "https://maps.app.goo.gl/NmAChqQBpf1pqVxF7",
       "coords": {
         "lat": 35.92039,
         "lng": 14.429389
@@ -481,7 +483,8 @@
       "name": "Mgarr Ix-Xini (Gozo)",
       "description": "The largest sport climbing crag in Malta and Gozo also has Deep Water Solo traverse routes as well as some bouldering. A must visit for any climber. ",
       "approach": "Cross the road heading towards the valley and follow a dirt track slowly down and along the edge of the cliffs. The path eventually drops down left into the valley.",
-      "parking": "For bouldering approach along Triq ta' Mgarr Ix-Xini and park in a layby.  https://maps.app.goo.gl/KwYD9VBiuqfyHHcd9",
+      "parking": "For bouldering approach along Triq ta' Mgarr Ix-Xini and park in a layby.",
+      "parkingUrl": "https://maps.app.goo.gl/KwYD9VBiuqfyHHcd9",
       "coords": {
         "lat": 36.023422,
         "lng": 14.263746
@@ -761,7 +764,8 @@
       "name": "Daħlet Qorrot (Gozo)",
       "description": "Lots of potential for boulder development but only 2 boulders with recorded climbs. Very close to the beach!",
       "approach": "\"Drive to Nadur. Drive along Triq it-Tigrika, following signs to San Blas. Take a left turn onto Triq San Blas as for Wied ir-Rahhan. However this time take fork right where signposted for Dahlet Qorrot and drive down Triq Dahlet Qorrot, always keeping left. Eventually one reaches a boulder spilling out onto the road on the right and a small stone hut slightly further down on the left. Park here. this area is known as il-Mixta.\"",
-      "parking": "Park at il-Mixta.\nhttps://maps.app.goo.gl/LtNh621ShvmV3omw5",
+      "parking": "Park at il-Mixta.",
+      "parkingUrl": "https://maps.app.goo.gl/LtNh621ShvmV3omw5",
       "mapUrl": "https://maps.app.goo.gl/LtNh621ShvmV3omw5",
       "boulders": []
     }
