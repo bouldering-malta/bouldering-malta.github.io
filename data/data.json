@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-09T11:07:53Z",
+    "version": "2026-09-09T11:24:50Z",
     "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -564,7 +564,7 @@
     },
     {
       "id": "ghajn-abdul",
-      "name": "Ghajn Abdul",
+      "name": "Ghajn Abdul (Gozo)",
       "description": "Great bouldering area with much untapped potential.",
       "approach": "\"Drive from Rabat towards Dwejra (Inland Sea) through Gharb until just past the Ta' Dbiegi craft centre on the left. Take the first left signposted to the Kempinski San Lawrenz Resort, follow a bumpy road which leads under the escarpment. Park at a dilapidated farmhouse and water trough. The crag is up and left.\" - Malta Rock Climbing - A Comprehensive Guide (2007) ",
       "parking": "\"Park at a dilapidated farmhouse and water trough.\" - Malta Rock Climbing - A Comprehensive Guide (2007) ",
@@ -755,6 +755,15 @@
           ]
         }
       ]
+    },
+    {
+      "id": "dahlet-qorrot-gozo-2",
+      "name": "Daħlet Qorrot (Gozo)",
+      "description": "Lots of potential for boulder development but only 2 boulders with recorded climbs. Very close to the beach!",
+      "approach": "\"Drive to Nadur. Drive along Triq it-Tigrika, following signs to San Blas. Take a left turn onto Triq San Blas as for Wied ir-Rahhan. However this time take fork right where signposted for Dahlet Qorrot and drive down Triq Dahlet Qorrot, always keeping left. Eventually one reaches a boulder spilling out onto the road on the right and a small stone hut slightly further down on the left. Park here. this area is known as il-Mixta.\"",
+      "parking": "Park at il-Mixta.\nhttps://maps.app.goo.gl/LtNh621ShvmV3omw5",
+      "mapUrl": "https://maps.app.goo.gl/LtNh621ShvmV3omw5",
+      "boulders": []
     }
   ]
 }
