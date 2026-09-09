@@ -33,7 +33,7 @@ export const SCHEMA = {
     fields: {
       id:          { type: "slug",     required: true, from: "name", pinned: true },
       name:        { type: "text",     required: true },
-      description: { type: "textarea", required: true },
+      description: { type: "textarea", required: false },
       topos:       { type: "imageList", required: false, label: "Topos",
                      rowFields: {
                        startsAt: {

@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-09T11:24:50Z",
+    "version": "2026-09-09T11:59:11Z",
     "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -767,7 +767,14 @@
       "parking": "Park at il-Mixta.",
       "parkingUrl": "https://maps.app.goo.gl/LtNh621ShvmV3omw5",
       "mapUrl": "https://maps.app.goo.gl/LtNh621ShvmV3omw5",
-      "boulders": []
+      "boulders": [
+        {
+          "id": "dahlet-qorrot-boulder",
+          "name": "Dahlet Qorrot Boulder",
+          "description": "show me the cat",
+          "climbs": []
+        }
+      ]
     }
   ]
 }
