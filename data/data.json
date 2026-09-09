@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-09T07:55:58Z",
+    "version": "2026-09-09T08:02:34Z",
     "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -199,7 +199,11 @@
               "gradeV": "V3",
               "stars": 2,
               "start": "stand",
-              "description": "From the slot move left to black flowstone then a hand traverse line left to the undercut prow, up this."
+              "description": "From the slot move left to black flowstone then a hand traverse line left to the undercut prow, up this.",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2001
+              }
             },
             {
               "name": "Point Break",
@@ -208,7 +212,11 @@
               "gradeV": "V2",
               "stars": 2,
               "start": "stand",
-              "description": "Using the slot for the right, gain the black flowstone with the left and then the good flat hold above. Continue up."
+              "description": "Using the slot for the right, gain the black flowstone with the left and then the good flat hold above. Continue up.",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 1999
+              }
             },
             {
               "name": "Point Five",
@@ -217,7 +225,11 @@
               "gradeV": "V2",
               "stars": 2,
               "start": "stand",
-              "description": "The easiest combination, from the slot with your right hand gain the flat hold direct with your left. Push for a jug high right. Slap up left."
+              "description": "The easiest combination, from the slot with your right hand gain the flat hold direct with your left. Push for a jug high right. Slap up left.",
+              "fa": {
+                "name": "John Codling",
+                "year": 1999
+              }
             },
             {
               "name": "Falls to Climb",
@@ -226,7 +238,11 @@
               "gradeV": "V2",
               "stars": 1,
               "start": "stand",
-              "description": "Get the high jug via moves to the right of the slot."
+              "description": "Get the high jug via moves to the right of the slot.",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 1999
+              }
             },
             {
               "name": "The Leopard",
@@ -244,7 +260,11 @@
               "gradeV": "V0",
               "stars": 2,
               "start": "stand",
-              "description": "The overhand breached by two superb cracks. This is the left hand. "
+              "description": "The overhand breached by two superb cracks. This is the left hand. ",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 1998
+              }
             },
             {
               "name": "Up",
@@ -253,7 +273,11 @@
               "gradeV": "V1",
               "stars": 1,
               "start": "stand",
-              "description": "Through the roof in the centre."
+              "description": "Through the roof in the centre.",
+              "fa": {
+                "name": "John Moulding",
+                "year": 1999
+              }
             },
             {
               "name": "Oddfellows",
@@ -262,7 +286,11 @@
               "gradeV": "V0",
               "stars": 2,
               "start": "stand",
-              "description": "The right hand crack."
+              "description": "The right hand crack.",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 1998
+              }
             }
           ]
         }
