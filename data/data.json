@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-09T09:24:23Z",
+    "version": "2026-09-09T10:05:10Z",
     "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -507,7 +507,11 @@
               "gradeFont": "7A",
               "gradeV": "V6",
               "stars": 0,
-              "start": "stand"
+              "start": "stand",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2003
+              }
             },
             {
               "name": "The Neanderthals",
@@ -515,7 +519,11 @@
               "gradeFont": "6A",
               "gradeV": "V3",
               "stars": 0,
-              "start": "stand"
+              "start": "stand",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2003
+              }
             },
             {
               "name": "Project",
@@ -523,6 +531,32 @@
               "project": true,
               "stars": 0,
               "start": "stand"
+            },
+            {
+              "name": "Mind vs Body",
+              "slug": "mind-vs-body",
+              "gradeFont": "3",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand",
+              "description": "The obvious overhanding groove line (On the side of the boulder not shown by the topo)",
+              "fa": {
+                "name": "Kurt Vella Haber",
+                "year": 2001
+              }
+            },
+            {
+              "name": "The Crucifix",
+              "slug": "the-crucifix",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand",
+              "description": "Just left of 'Mind vs Body'. Traverse left and then over the overhang. (On the side of the boulder not shown by the topo)",
+              "fa": {
+                "name": "Stephan Cachia",
+                "year": 2001
+              }
             }
           ]
         }
