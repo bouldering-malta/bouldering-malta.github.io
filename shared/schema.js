@@ -32,7 +32,7 @@ export const SCHEMA = {
       id:          { type: "slug",     required: true, from: "name", pinned: true },
       name:        { type: "text",     required: true },
       description: { type: "textarea", required: true },
-      topos:       { type: "imageList", required: true, label: "Topos",
+      topos:       { type: "imageList", required: false, label: "Topos",
                      rowFields: {
                        startsAt: {
                          type: "number", label: "First problem on this topo",
@@ -359,6 +359,10 @@ export function validateNode(type, node, siblings) {
         break;
     }
   });
+
+  if (type === "boulder" && (!node.topos || !node.topos.length)) {
+    push("warning", "topos", "No topo yet — the problems will list without one.");
+  }
 
   /* A sector nobody can find is worth flagging, though not worth blocking. */
   if (type === "sector") {

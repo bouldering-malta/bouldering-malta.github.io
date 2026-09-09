@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-09T11:01:25Z",
+    "version": "2026-09-09T11:07:53Z",
     "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -598,7 +598,11 @@
               "gradeFont": "6B",
               "gradeV": "V4",
               "stars": 0,
-              "start": "sit"
+              "start": "sit",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2001
+              }
             },
             {
               "name": "Magic Jack",
@@ -606,7 +610,11 @@
               "gradeFont": "4",
               "gradeV": "V0",
               "stars": 0,
-              "start": "stand"
+              "start": "stand",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2001
+              }
             },
             {
               "name": "Tlieta Cisk (Three Cicks)",
@@ -614,7 +622,11 @@
               "gradeFont": "7B",
               "gradeV": "V8",
               "stars": 0,
-              "start": "sit"
+              "start": "sit",
+              "fa": {
+                "name": "Cesar Vegara",
+                "year": 2004
+              }
             },
             {
               "name": "Midnight Madness",
@@ -623,7 +635,11 @@
               "gradeV": "V1",
               "stars": 0,
               "start": "stand",
-              "description": "Traverse the lip from right to left heel hooking with your right leg for most of the route."
+              "description": "Traverse the lip from right to left heel hooking with your right leg for most of the route.",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2001
+              }
             },
             {
               "name": "Sitstart Madness",
@@ -632,15 +648,23 @@
               "gradeV": "V4",
               "stars": 0,
               "start": "sit",
-              "description": "Sit start variation of Midnight Madness"
+              "description": "Sit start variation of Midnight Madness",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2001
+              }
             },
             {
-              "name": "Sitstart arete",
+              "name": "Sitstart Arete",
               "slug": "sitstart-arete",
               "gradeFont": "4+",
               "gradeV": "V1",
               "stars": 0,
-              "start": "sit"
+              "start": "sit",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2001
+              }
             }
           ]
         },
@@ -671,7 +695,11 @@
               "gradeFont": "4",
               "gradeV": "V0",
               "stars": 0,
-              "start": "stand"
+              "start": "stand",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2001
+              }
             },
             {
               "name": "Bruised Ego",
@@ -679,7 +707,11 @@
               "gradeFont": "5+",
               "gradeV": "V2",
               "stars": 0,
-              "start": "stand"
+              "start": "stand",
+              "fa": {
+                "name": "John Codling",
+                "year": 2001
+              }
             },
             {
               "name": "Massaged Ego",
@@ -687,7 +719,11 @@
               "gradeFont": "4+",
               "gradeV": "V1",
               "stars": 0,
-              "start": "stand"
+              "start": "stand",
+              "fa": {
+                "name": "John Codling",
+                "year": 2001
+              }
             },
             {
               "name": "Sacrificed Ego",
@@ -695,7 +731,11 @@
               "gradeFont": "6A",
               "gradeV": "V3",
               "stars": 0,
-              "start": "stand"
+              "start": "stand",
+              "fa": {
+                "name": "Jeffrey Camilleri",
+                "year": 2006
+              }
             }
           ]
         },
@@ -703,14 +743,6 @@
           "id": "little-brother",
           "name": "Little Brother",
           "description": "About 300m round to the right of the Grindstone is Little Brother, a much smaller, isolated boulder, a couple of fields down from the main cliff, with just one route on it.",
-          "topos": [
-            {
-              "src": "images/topos/big-brother.png",
-              "alt": "images/topos/big-brother.png",
-              "credit": "images/topos/big-brother.png",
-              "startsAt": 1
-            }
-          ],
           "climbs": [
             {
               "name": "Ordinary Gold",
