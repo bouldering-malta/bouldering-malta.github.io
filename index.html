@@ -131,6 +131,20 @@
             <option value="3">★★★</option>
           </select>
         </div>
+        <div class="filter">
+          <label for="f-sort">Sort by</label>
+          <select id="f-sort">
+            <option value="default">Guide order</option>
+            <option value="name:asc">Name (A–Z)</option>
+            <option value="name:desc">Name (Z–A)</option>
+            <option value="grade:asc">Grade (easiest first)</option>
+            <option value="grade:desc">Grade (hardest first)</option>
+            <option value="stars:desc">Stars (most first)</option>
+            <option value="stars:asc">Stars (fewest first)</option>
+            <option value="sector:asc">Sector (A–Z)</option>
+            <option value="boulder:asc">Boulder (A–Z)</option>
+          </select>
+        </div>
         <button type="button" id="f-clear" class="btn btn-quiet">Clear filters</button>
       </div>
 
@@ -140,13 +154,21 @@
       <table id="catalog-table" class="catalog-table">
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col" aria-sort="none" id="th-grade">
-              <button type="button" id="sort-grade">Grade<span class="sort-mark" aria-hidden="true"></span></button>
+            <th scope="col" aria-sort="none" data-sort="name">
+              <button type="button">Name<span class="sort-mark" aria-hidden="true"></span></button>
             </th>
-            <th scope="col">Stars</th>
-            <th scope="col">Sector</th>
-            <th scope="col">Boulder</th>
+            <th scope="col" aria-sort="none" data-sort="grade">
+              <button type="button">Grade<span class="sort-mark" aria-hidden="true"></span></button>
+            </th>
+            <th scope="col" aria-sort="none" data-sort="stars">
+              <button type="button">Stars<span class="sort-mark" aria-hidden="true"></span></button>
+            </th>
+            <th scope="col" aria-sort="none" data-sort="sector">
+              <button type="button">Sector<span class="sort-mark" aria-hidden="true"></span></button>
+            </th>
+            <th scope="col" aria-sort="none" data-sort="boulder">
+              <button type="button">Boulder<span class="sort-mark" aria-hidden="true"></span></button>
+            </th>
           </tr>
         </thead>
         <tbody id="catalog-body"></tbody>

@@ -18,7 +18,7 @@ var state = {
   data: null,
   climbs: [],           // flat list, in sector then array order
   scale: "font",        // "font" | "v"
-  sort: "default",      // "default" | "asc" | "desc"
+  sort: { key: "default", dir: "asc" },   // key: default|name|grade|stars|sector|boulder
   filters: { name: "", from: -1, to: -1, sector: "all", stars: 0 },
   gradeOptions: [],     // grade strings in the active scale, ascending
   lastFocus: null
@@ -113,6 +113,49 @@ function buildSectorOptions() {
     }).join("");
 }
 
+/* One comparator per sortable column. Each returns 0 for a tie, and every sort
+   falls back to guide order, so equal rows keep the order the guide lists them
+   in rather than shuffling between renders. */
+var COMPARE = {
+  name: function (a, b) {
+    return a.climb.name.localeCompare(b.climb.name, "en", { sensitivity: "base" });
+  },
+  sector: function (a, b) {
+    return a.sectorName.localeCompare(b.sectorName, "en", { sensitivity: "base" });
+  },
+  boulder: function (a, b) {
+    return a.boulderName.localeCompare(b.boulderName, "en", { sensitivity: "base" });
+  },
+  stars: function (a, b) {
+    return (a.climb.stars || 0) - (b.climb.stars || 0);
+  },
+  grade: function (a, b) {
+    return gradeIndex(a.climb) - gradeIndex(b.climb);
+  }
+};
+
+function sortRows(rows) {
+  var key = state.sort.key;
+  if (key === "default" || !COMPARE[key]) return rows;
+
+  var dir = state.sort.dir === "desc" ? -1 : 1;
+
+  return rows.slice().sort(function (a, b) {
+    /* Projects have no grade, so they sit after the graded climbs whichever
+       way the column is sorted. Letting their index fall off the end of the
+       ladder would park them at the top of a hardest-first sort, which reads
+       as a claim about how hard they are. */
+    if (key === "grade") {
+      var ap = !!a.climb.project, bp = !!b.climb.project;
+      if (ap !== bp) return ap ? 1 : -1;
+      if (ap && bp) return a.order - b.order;
+    }
+
+    var d = COMPARE[key](a, b);
+    return d !== 0 ? d * dir : a.order - b.order;
+  });
+}
+
 function filteredRows() {
   var f = state.filters;
   var needle = f.name.trim().toLowerCase();
@@ -134,22 +177,7 @@ function filteredRows() {
     return true;
   });
 
-  if (state.sort !== "default") {
-    var dir = state.sort === "asc" ? 1 : -1;
-    rows = rows.slice().sort(function (a, b) {
-      /* Projects have no grade, so they sit after the graded climbs whichever
-         way the column is sorted. Letting their index fall off the end of the
-         ladder would park them at the top of a hardest-first sort, which reads
-         as a claim about how hard they are. */
-      var ap = !!a.climb.project, bp = !!b.climb.project;
-      if (ap !== bp) return ap ? 1 : -1;
-      if (ap && bp) return a.order - b.order;
-
-      var d = gradeIndex(a.climb) - gradeIndex(b.climb);
-      return d !== 0 ? d * dir : a.order - b.order;
-    });
-  }
-  return rows;
+  return sortRows(rows);
 }
 
 function renderCatalog() {
@@ -171,10 +199,21 @@ function renderCatalog() {
   $("#no-results").hidden = rows.length > 0;
   $("#catalog-table").hidden = rows.length === 0;
 
-  var mark = state.sort === "asc" ? "↑" : state.sort === "desc" ? "↓" : "";
-  $(".sort-mark").textContent = mark;
-  $("#th-grade").setAttribute("aria-sort",
-    state.sort === "asc" ? "ascending" : state.sort === "desc" ? "descending" : "none");
+  renderSortIndicators();
+}
+
+function renderSortIndicators() {
+  var key = state.sort.key;
+  var dir = state.sort.dir;
+
+  document.querySelectorAll(".catalog-table th[data-sort]").forEach(function (th) {
+    var active = th.dataset.sort === key;
+    th.setAttribute("aria-sort", active ? (dir === "asc" ? "ascending" : "descending") : "none");
+    th.classList.toggle("is-sorted", active);
+    th.querySelector(".sort-mark").textContent = active ? (dir === "asc" ? "↑" : "↓") : "";
+  });
+
+  $("#f-sort").value = key === "default" ? "default" : key + ":" + dir;
 }
 
 function wireCatalog() {
@@ -207,8 +246,25 @@ function wireCatalog() {
     $("#f-stars").value = "0";
     renderCatalog();
   });
-  $("#sort-grade").addEventListener("click", function () {
-    state.sort = state.sort === "default" ? "asc" : state.sort === "asc" ? "desc" : "default";
+  /* Clicking a heading cycles that column: ascending, descending, then back to
+     the guide's own order. */
+  document.querySelectorAll(".catalog-table th[data-sort] button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var key = btn.closest("th").dataset.sort;
+
+      if (state.sort.key !== key) state.sort = { key: key, dir: "asc" };
+      else if (state.sort.dir === "asc") state.sort = { key: key, dir: "desc" };
+      else state.sort = { key: "default", dir: "asc" };
+
+      renderCatalog();
+    });
+  });
+
+  $("#f-sort").addEventListener("change", function (e) {
+    var parts = e.target.value.split(":");
+    state.sort = parts[0] === "default"
+      ? { key: "default", dir: "asc" }
+      : { key: parts[0], dir: parts[1] };
     renderCatalog();
   });
 }

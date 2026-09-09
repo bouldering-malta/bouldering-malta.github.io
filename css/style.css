@@ -600,7 +600,8 @@ body.grade-v .g-font::after { content: ")"; }
   color: var(--ink-soft);
 }
 .catalog-table .grade { justify-content: flex-start; min-width: 0; }
-#sort-grade {
+
+.catalog-table th[data-sort] button {
   font: inherit;
   color: inherit;
   background: none;
@@ -608,7 +609,11 @@ body.grade-v .g-font::after { content: ")"; }
   padding: 0;
   cursor: pointer;
   min-height: 44px;
+  text-align: left;
+  white-space: nowrap;
 }
+.catalog-table th[data-sort] button:hover { color: var(--ink); }
+.catalog-table th.is-sorted { color: var(--ink); }
 .sort-mark { margin-left: 0.35em; }
 
 .load-error {
