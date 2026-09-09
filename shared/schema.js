@@ -44,8 +44,12 @@ export const SCHEMA = {
     fields: {
       name:        { type: "text",      required: true },
       slug:        { type: "slug",      required: true, from: "name", pinned: true },
-      gradeFont:   { type: "grade",     required: true, scale: "font" },
-      gradeV:      { type: "grade",     required: true, scale: "v", derived: "gradeFont" },
+      project:     { type: "boolean",   required: false, label: "Project (not yet sent)",
+                     hint: "An open project has no grade until someone sends it." },
+      gradeFont:   { type: "grade",     required: true, scale: "font",
+                     exceptWhen: "project" },
+      gradeV:      { type: "grade",     required: true, scale: "v", derived: "gradeFont",
+                     exceptWhen: "project" },
       stars:       { type: "stars",     required: true, min: 0, max: 3 },
       start:       { type: "enum",      required: true, values: ["sit", "stand"] },
       description: { type: "textarea",  required: false },
@@ -106,6 +110,12 @@ export function fieldList(type) {
   return Object.keys(SCHEMA[type].fields).map(function (name) {
     return { name: name, spec: SCHEMA[type].fields[name] };
   });
+}
+
+/* A field with `exceptWhen` drops out entirely while that flag is set on the
+   node — the grades of a project being the case this exists for. */
+export function fieldApplies(spec, node) {
+  return !spec.exceptWhen || !node[spec.exceptWhen];
 }
 
 /* "Topos" -> "Topo". Used for the rows of an imageList and its messages. */
@@ -196,6 +206,8 @@ export function validateNode(type, node, siblings) {
 
   fieldList(type).forEach(function (f) {
     var name = f.name, spec = f.spec, value = node[name];
+
+    if (!fieldApplies(spec, node)) return;
 
     switch (spec.type) {
       case "slug":
@@ -318,6 +330,12 @@ export function validateNode(type, node, siblings) {
         }
         break;
 
+      case "boolean":
+        if (value !== undefined && typeof value !== "boolean") {
+          push("error", name, labelFor(type, name) + " must be true or false.");
+        }
+        break;
+
       case "url":
       default:
         break;
@@ -394,6 +412,10 @@ function serializeNode(type, node) {
   fieldList(type).forEach(function (f) {
     var name = f.name, spec = f.spec, value = node[name];
 
+    // Grades of a project are not written at all, so the file never carries a
+    // grade the site refuses to show.
+    if (!fieldApplies(spec, node)) return;
+
     switch (spec.type) {
       case "coords":
         out[name] = { lat: value.lat, lng: value.lng };
@@ -430,6 +452,10 @@ function serializeNode(type, node) {
 
       case "stars":
         out[name] = Number(value) || 0;
+        break;
+
+      case "boolean":
+        if (value) out[name] = true;   // false is the default; omit it
         break;
 
       default:

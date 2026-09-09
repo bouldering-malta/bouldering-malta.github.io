@@ -44,12 +44,14 @@ export function decorate(data) {
         climb._vIdx = V_SCALE.indexOf(climb.gradeV);
 
         if (climb._fontIdx < 0 || climb._vIdx < 0) {
-          // A blank grade is a half-written entry, which the editor already
-          // reports as a validation error. Only shout about a real typo.
-          if (climb.gradeFont || climb.gradeV) {
+          // A project has no grade by definition, and a blank grade elsewhere
+          // is a half-written entry the editor already flags. Only shout about
+          // a real typo.
+          if (!climb.project && (climb.gradeFont || climb.gradeV)) {
             console.warn("Unknown grade on \"" + climb.name + "\": " +
               climb.gradeFont + " / " + climb.gradeV);
           }
+          // Ungraded sorts to the end of the ladder in either direction.
           if (climb._fontIdx < 0) climb._fontIdx = FONT_SCALE.length;
           if (climb._vIdx < 0) climb._vIdx = V_SCALE.length;
         }
@@ -80,6 +82,13 @@ export function starsHtml(n) {
 }
 
 export function gradeHtml(climb) {
+  /* An open project has no grade, so it shows ??? in the grade's place rather
+     than an empty column. The label spells it out, because three question
+     marks read as nothing at all to a screen reader. */
+  if (climb.project) {
+    return '<span class="grade grade-project" aria-label="Project, ungraded">???</span>';
+  }
+
   var fontIdx = climb._fontIdx == null ? FONT_SCALE.indexOf(climb.gradeFont) : climb._fontIdx;
   return '<span class="grade ' + gradeBand(fontIdx) + '">' +
     '<span class="g-font">' + esc(climb.gradeFont) + "</span>" +

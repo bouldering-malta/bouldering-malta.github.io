@@ -82,7 +82,9 @@ function renderFooter(meta) {
 
 function buildGradeOptions() {
   var seen = {};
-  var list = state.climbs.map(function (row) {
+  var list = state.climbs.filter(function (row) {
+    return !row.climb.project;          // projects contribute no grade
+  }).map(function (row) {
     return state.scale === "font" ? row.climb.gradeFont : row.climb.gradeV;
   }).filter(function (g) {
     if (seen[g]) return false;
@@ -120,6 +122,12 @@ function filteredRows() {
     if (needle && c.name.toLowerCase().indexOf(needle) === -1) return false;
     if (f.sector !== "all" && row.sectorId !== f.sector) return false;
     if (f.stars && c.stars < f.stars) return false;
+
+    // A project has no grade, so it cannot satisfy a grade range. Narrowing
+    // the grades filters projects out rather than showing ungraded lines
+    // inside a bounded range.
+    if (c.project) return f.from === -1 && f.to === -1;
+
     var idx = gradeIndex(c);
     if (f.from > -1 && idx < f.from) return false;
     if (f.to > -1 && idx > f.to) return false;
@@ -129,6 +137,14 @@ function filteredRows() {
   if (state.sort !== "default") {
     var dir = state.sort === "asc" ? 1 : -1;
     rows = rows.slice().sort(function (a, b) {
+      /* Projects have no grade, so they sit after the graded climbs whichever
+         way the column is sorted. Letting their index fall off the end of the
+         ladder would park them at the top of a hardest-first sort, which reads
+         as a claim about how hard they are. */
+      var ap = !!a.climb.project, bp = !!b.climb.project;
+      if (ap !== bp) return ap ? 1 : -1;
+      if (ap && bp) return a.order - b.order;
+
       var d = gradeIndex(a.climb) - gradeIndex(b.climb);
       return d !== 0 ? d * dir : a.order - b.order;
     });

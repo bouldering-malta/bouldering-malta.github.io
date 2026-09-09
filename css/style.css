@@ -490,6 +490,12 @@ body.grade-v .g-font::before { content: "("; }
 body.grade-font .g-v::after,
 body.grade-v .g-font::after { content: ")"; }
 
+/* An open project: no grade, so no place on the colour ramp either. */
+.grade-project {
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+}
+
 .g1 { color: var(--g1); }
 .g2 { color: var(--g2); }
 .g3 { color: var(--g3); }

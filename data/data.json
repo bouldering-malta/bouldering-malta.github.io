@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-09T09:13:35Z",
+    "version": "2026-09-09T09:24:23Z",
     "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -520,8 +520,7 @@
             {
               "name": "Project",
               "slug": "project",
-              "gradeFont": "9A",
-              "gradeV": "V17",
+              "project": true,
               "stars": 0,
               "start": "stand"
             }

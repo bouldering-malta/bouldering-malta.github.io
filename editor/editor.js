@@ -10,7 +10,7 @@
    never left in a broken state. */
 
 import {
-  SCHEMA, slugify, keyField, childKey, childType, fieldList,
+  SCHEMA, slugify, keyField, childKey, childType, fieldList, fieldApplies,
   labelFor, singularLabel, blankNode, mapUrlFor, parseCoords, migrate,
   validateData, toJson
 } from "../shared/schema.js";
@@ -692,6 +692,7 @@ function renderForm() {
   renderBreadcrumb(path);
 
   fieldList(type).forEach(function (f) {
+    if (!fieldApplies(f.spec, node)) return;
     form.appendChild(buildField(type, node, path, f.name, f.spec));
   });
 
@@ -759,6 +760,7 @@ function fieldShell(type, name, spec) {
 function buildField(type, node, path, name, spec) {
   var wrap = fieldShell(type, name, spec);
   var label = wrap.querySelector(".field-label");
+  if (spec.type === "boolean") label.remove();
   var control;
 
   switch (spec.type) {
@@ -788,6 +790,10 @@ function buildField(type, node, path, name, spec) {
 
     case "stars":
       control = starsControl(node, name);
+      break;
+
+    case "boolean":
+      control = checkbox(node, name, spec);
       break;
 
     case "enum":
@@ -995,6 +1001,40 @@ function starsControl(node, name) {
 
   paint();
   return group;
+}
+
+/* Ticking this can add or remove other fields — a project has no grades — so
+   it rebuilds the form rather than just updating in place. */
+function checkbox(node, name, spec) {
+  var holder = document.createElement("div");
+
+  var label = document.createElement("label");
+  label.className = "check";
+
+  var input = document.createElement("input");
+  input.type = "checkbox";
+  input.checked = !!node[name];
+  input.addEventListener("change", function () {
+    if (input.checked) node[name] = true;
+    else delete node[name];
+
+    changed(true);
+    var again = document.querySelector('#form .field[data-field="' + name + '"] input');
+    if (again) again.focus();
+  });
+
+  label.appendChild(input);
+  label.appendChild(document.createTextNode(spec.label || labelFor("climb", name)));
+  holder.appendChild(label);
+
+  if (spec.hint) {
+    var hint = document.createElement("p");
+    hint.className = "hint";
+    hint.textContent = spec.hint;
+    holder.appendChild(hint);
+  }
+
+  return holder;
 }
 
 function radioGroup(node, name, spec) {
