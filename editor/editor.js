@@ -805,7 +805,7 @@ function buildField(type, node, path, name, spec) {
       break;
 
     case "url":
-      control = derivedUrl(node, name, spec);
+      control = urlControl(node, name, spec);
       break;
 
     case "image":
@@ -1067,10 +1067,18 @@ function coordsControl(node, name) {
   var row = document.createElement("div");
   row.className = "row";
 
-  var sync = function () {
-    var urlField = $('.field[data-field="mapUrl"] input');
-    if (urlField) urlField.value = mapUrlFor(coords);
-    node.mapUrl = mapUrlFor(coords);
+  /* Only refresh the map link while it is still the one we derived. A link you
+     pasted yourself is yours, and moving the pin should not silently bin it. */
+  var sync = function (previous) {
+    var derivedBefore = mapUrlFor(previous || {});
+    var ownsLink = !node.mapUrl || node.mapUrl === derivedBefore;
+
+    if (ownsLink) {
+      node.mapUrl = mapUrlFor(coords);
+      if (!node.mapUrl) delete node.mapUrl;
+      var urlField = $('.field[data-field="mapUrl"] input');
+      if (urlField) urlField.value = node.mapUrl || "";
+    }
     changed(false);
   };
 
@@ -1082,8 +1090,9 @@ function coordsControl(node, name) {
     input.setAttribute("aria-label", which === "lat" ? "Latitude" : "Longitude");
     input.value = coords[which] == null ? "" : coords[which];
     input.addEventListener("input", function () {
+      var previous = { lat: coords.lat, lng: coords.lng };
       coords[which] = input.value === "" ? null : Number(input.value);
-      sync();
+      sync(previous);
     });
     return input;
   };
@@ -1097,11 +1106,12 @@ function coordsControl(node, name) {
   var paste = textInput("", function (v) {
     var parsed = parseCoords(v);
     if (!parsed) return;
+    var previous = { lat: coords.lat, lng: coords.lng };
     coords.lat = parsed.lat;
     coords.lng = parsed.lng;
     lat.value = parsed.lat;
     lng.value = parsed.lng;
-    sync();
+    sync(previous);
   }, { placeholder: "…or paste a Google Maps link or “35.8206, 14.5461”" });
   paste.style.marginTop = "0.4rem";
   holder.appendChild(paste);
@@ -1109,16 +1119,38 @@ function coordsControl(node, name) {
   return holder;
 }
 
-function derivedUrl(node, name) {
+/* Paste any map link here. If it happens to carry coordinates and none are set
+   yet, they get filled in for free — a short maps.app.goo.gl link does not, and
+   that is fine: the link alone is enough to navigate by. */
+function urlControl(node, name, spec) {
   var holder = document.createElement("div");
-  var input = textInput(node[name] || mapUrlFor(node.coords), null, { readonly: true });
-  input.addEventListener("input", function () { /* readonly, derived from coords */ });
+
+  var input = textInput(node[name] || "", function (v) {
+    var trimmed = v.trim();
+    if (trimmed) node[name] = trimmed;
+    else delete node[name];
+
+    var parsed = parseCoords(trimmed);
+    var coords = node.coords || (node.coords = { lat: null, lng: null });
+    var empty = coords.lat == null && coords.lng == null;
+    if (parsed && empty) {
+      coords.lat = parsed.lat;
+      coords.lng = parsed.lng;
+      var fields = document.querySelectorAll('.field[data-field="coords"] input');
+      if (fields[0]) fields[0].value = parsed.lat;
+      if (fields[1]) fields[1].value = parsed.lng;
+    }
+    changed(false);
+  }, { type: "url", placeholder: "https://maps.app.goo.gl/…" });
+
   holder.appendChild(input);
 
-  var hint = document.createElement("p");
-  hint.className = "hint";
-  hint.textContent = "Derived from the coordinates.";
-  holder.appendChild(hint);
+  if (spec && spec.hint) {
+    var hint = document.createElement("p");
+    hint.className = "hint";
+    hint.textContent = spec.hint;
+    holder.appendChild(hint);
+  }
   return holder;
 }
 

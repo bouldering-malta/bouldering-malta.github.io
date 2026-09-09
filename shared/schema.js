@@ -18,8 +18,10 @@ export const SCHEMA = {
       description: { type: "textarea", required: true },
       approach:    { type: "textarea", required: true },
       parking:     { type: "textarea", required: true },
-      coords:      { type: "coords",   required: true },
-      mapUrl:      { type: "url",      derived: "coords" }
+      coords:      { type: "coords",   required: false },
+      mapUrl:      { type: "url",      required: false, label: "Map link",
+                     derivedFrom: "coords",
+                     hint: "Paste a Google Maps link, including a short maps.app.goo.gl one. Filled in from the coordinates if you leave it blank." }
     }
   },
   boulder: {
@@ -251,9 +253,16 @@ export function validateNode(type, node, siblings) {
         }
         break;
 
-      case "coords":
-        if (!value || !isFiniteNumber(value.lat) || !isFiniteNumber(value.lng)) {
-          push("error", name, "Latitude and longitude are both required.");
+      case "coords": {
+        var hasLat = value && isFiniteNumber(value.lat);
+        var hasLng = value && isFiniteNumber(value.lng);
+
+        if (!hasLat && !hasLng) {
+          if (spec.required) push("error", name, "Latitude and longitude are both required.");
+          break;                       // optional and empty: nothing to check
+        }
+        if (!hasLat || !hasLng) {
+          push("error", name, "Give both latitude and longitude, or neither.");
         } else if (value.lat < -90 || value.lat > 90 || value.lng < -180 || value.lng > 180) {
           push("error", name, "Not a valid latitude/longitude pair.");
         } else if (value.lat < MALTA_BOUNDS.minLat || value.lat > MALTA_BOUNDS.maxLat ||
@@ -261,6 +270,7 @@ export function validateNode(type, node, siblings) {
           push("warning", name, "These coordinates fall outside Malta — check lat and lng are the right way round.");
         }
         break;
+      }
 
       case "image":
         if (spec.required && (!value || blank(value.src))) {
@@ -337,10 +347,23 @@ export function validateNode(type, node, siblings) {
         break;
 
       case "url":
+        if (blank(value)) break;
+        if (!/^https?:\/\/\S+$/i.test(String(value).trim())) {
+          push("error", name, labelFor(type, name) + " must be a full http:// or https:// link.");
+        }
+        break;
+
       default:
         break;
     }
   });
+
+  /* A sector nobody can find is worth flagging, though not worth blocking. */
+  if (type === "sector") {
+    var located = (node.coords && isFiniteNumber(node.coords.lat) && isFiniteNumber(node.coords.lng)) ||
+      !blank(node.mapUrl);
+    if (!located) push("warning", "mapUrl", "No coordinates and no map link — nothing to navigate by.");
+  }
 
   /* An empty container is legal but is almost always a half-finished edit. */
   var ck = childKey(type);
@@ -418,14 +441,17 @@ function serializeNode(type, node) {
 
     switch (spec.type) {
       case "coords":
-        out[name] = { lat: value.lat, lng: value.lng };
+        if (value && isFiniteNumber(value.lat) && isFiniteNumber(value.lng)) {
+          out[name] = { lat: value.lat, lng: value.lng };
+        }
         break;
 
       case "url":
-        if (spec.derived === "coords") {
+        if (!blank(value)) out[name] = String(value).trim();
+        else if (spec.derivedFrom === "coords") {
           var url = mapUrlFor(node.coords);
           if (url) out[name] = url;
-        } else if (!blank(value)) out[name] = value;
+        }
         break;
 
       case "image":

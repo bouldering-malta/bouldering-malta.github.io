@@ -230,11 +230,23 @@ export function boulderHtml(sector, boulder) {
 }
 
 export function sectorHtml(sector) {
+  /* Either half of the location can be missing: coordinates alone, a pasted
+     map link alone, or both. A sector with neither simply has no location row
+     rather than an em dash standing in for one. */
   var hasCoords = sector.coords &&
     typeof sector.coords.lat === "number" && typeof sector.coords.lng === "number";
-  var coords = hasCoords
-    ? sector.coords.lat.toFixed(4) + ", " + sector.coords.lng.toFixed(4)
-    : "—";
+  var link = sector.mapUrl
+    ? '<a href="' + esc(sector.mapUrl) + '" rel="noopener">Open in maps</a>'
+    : "";
+
+  var location = "";
+  if (hasCoords) {
+    location = '<dt>Coordinates</dt><dd class="coords">' +
+      sector.coords.lat.toFixed(4) + ", " + sector.coords.lng.toFixed(4) +
+      (link ? " " + link : "") + "</dd>";
+  } else if (link) {
+    location = "<dt>Location</dt><dd class=\"coords\">" + link + "</dd>";
+  }
 
   return '<details class="sector" id="' + esc(sector.id) + '">' +
     "<summary>" +
@@ -248,9 +260,7 @@ export function sectorHtml(sector) {
       '<dl class="sector-notes">' +
         "<dt>Approach</dt><dd>" + esc(sector.approach) + "</dd>" +
         "<dt>Parking</dt><dd>" + esc(sector.parking) + "</dd>" +
-        '<dt>Coordinates</dt><dd class="coords">' + coords +
-          (sector.mapUrl ? ' <a href="' + esc(sector.mapUrl) + '" rel="noopener">Open in maps</a>' : "") +
-        "</dd>" +
+        location +
       "</dl>" +
       (sector.boulders || []).map(function (b) { return boulderHtml(sector, b); }).join("") +
     "</div></details>";
