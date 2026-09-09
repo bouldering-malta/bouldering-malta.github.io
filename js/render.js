@@ -259,7 +259,11 @@ export function sectorHtml(sector) {
       "<p>" + esc(sector.description) + "</p>" +
       '<dl class="sector-notes">' +
         "<dt>Approach</dt><dd>" + esc(sector.approach) + "</dd>" +
-        "<dt>Parking</dt><dd>" + esc(sector.parking) + "</dd>" +
+        "<dt>Parking</dt><dd>" + esc(sector.parking) +
+          (sector.parkingUrl
+            ? ' <a href="' + esc(sector.parkingUrl) + '" rel="noopener">Open parking in maps</a>'
+            : "") +
+        "</dd>" +
         location +
       "</dl>" +
       (sector.boulders || []).map(function (b) { return boulderHtml(sector, b); }).join("") +

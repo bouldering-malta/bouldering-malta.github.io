@@ -1130,7 +1130,9 @@ function urlControl(node, name, spec) {
     if (trimmed) node[name] = trimmed;
     else delete node[name];
 
-    var parsed = parseCoords(trimmed);
+    /* Only the field that stands in for the coordinates may fill them in. A
+       parking link points at the car park, not at the sector. */
+    var parsed = spec && spec.derivedFrom === "coords" ? parseCoords(trimmed) : null;
     var coords = node.coords || (node.coords = { lat: null, lng: null });
     var empty = coords.lat == null && coords.lng == null;
     if (parsed && empty) {

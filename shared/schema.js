@@ -18,6 +18,8 @@ export const SCHEMA = {
       description: { type: "textarea", required: true },
       approach:    { type: "textarea", required: true },
       parking:     { type: "textarea", required: true },
+      parkingUrl:  { type: "url",      required: false, label: "Parking map link",
+                     hint: "Optional. A Google Maps link to the parking spot itself, separate from the sector's own location." },
       coords:      { type: "coords",   required: false },
       mapUrl:      { type: "url",      required: false, label: "Map link",
                      derivedFrom: "coords",

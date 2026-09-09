@@ -62,6 +62,13 @@ body[data-print-sector] .sector-name::before { content: none; }
 /* Approach, parking and coordinates stay on the first page of the sector */
 .sector-notes { page-break-after: avoid; }
 
+/* On paper "Open in maps" is a dead end, so the address is printed out. */
+.sector-notes a[href^="http"]::after {
+  content: " (" attr(href) ")";
+  font-size: 8pt;
+  word-break: break-all;
+}
+
 /* A boulder carrying two or more topos is taller than a page, and telling the
    browser not to break it just leaves half-empty pages. Let boulders break;
    protect the pieces that genuinely must stay whole instead. */
