@@ -150,6 +150,7 @@ export function blankNode(type) {
     else if (f.spec.type === "stars") node[f.name] = 0;
     else if (f.spec.type === "enum") node[f.name] = f.spec.values[0];
     else if (f.spec.type === "group" || f.spec.type === "imageList") { /* omitted until used */ }
+    else if (f.spec.type === "boolean") { /* omitted: absent means false */ }
     else node[f.name] = "";
   });
   var ck = childKey(type);
@@ -341,7 +342,8 @@ export function validateNode(type, node, siblings) {
         break;
 
       case "boolean":
-        if (value !== undefined && typeof value !== "boolean") {
+        if (value === undefined || value === null || value === "") break;   // unset
+        if (typeof value !== "boolean") {
           push("error", name, labelFor(type, name) + " must be true or false.");
         }
         break;

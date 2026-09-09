@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-09T10:51:14Z",
+    "version": "2026-09-09T11:01:25Z",
     "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -595,7 +595,128 @@
             {
               "name": "De Nana",
               "slug": "de-nana",
-              "project": true,
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "sit"
+            },
+            {
+              "name": "Magic Jack",
+              "slug": "magic-jack",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand"
+            },
+            {
+              "name": "Tlieta Cisk (Three Cicks)",
+              "slug": "tlieta-cisk-three-cicks-2",
+              "gradeFont": "7B",
+              "gradeV": "V8",
+              "stars": 0,
+              "start": "sit"
+            },
+            {
+              "name": "Midnight Madness",
+              "slug": "midnight-madness",
+              "gradeFont": "4+",
+              "gradeV": "V1",
+              "stars": 0,
+              "start": "stand",
+              "description": "Traverse the lip from right to left heel hooking with your right leg for most of the route."
+            },
+            {
+              "name": "Sitstart Madness",
+              "slug": "sitstart-madness",
+              "gradeFont": "6B",
+              "gradeV": "V4",
+              "stars": 0,
+              "start": "sit",
+              "description": "Sit start variation of Midnight Madness"
+            },
+            {
+              "name": "Sitstart arete",
+              "slug": "sitstart-arete",
+              "gradeFont": "4+",
+              "gradeV": "V1",
+              "stars": 0,
+              "start": "sit"
+            }
+          ]
+        },
+        {
+          "id": "big-brother",
+          "name": "Big Brother",
+          "description": "Just behind and to the right of the grindstone is the Big Brother, characterized by a sharp, overhanging arete on it's right side.",
+          "topos": [
+            {
+              "src": "images/topos/big-brother-topo.png",
+              "alt": "images/topos/big-brother-topo.png",
+              "credit": "Malta rock Climbing - The Comprehensive Guide (2007)",
+              "startsAt": 1
+            }
+          ],
+          "climbs": [
+            {
+              "name": "The Sister",
+              "slug": "the-sister",
+              "gradeFont": "3",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand"
+            },
+            {
+              "name": "The Cousin",
+              "slug": "the-cousin",
+              "gradeFont": "4",
+              "gradeV": "V0",
+              "stars": 0,
+              "start": "stand"
+            },
+            {
+              "name": "Bruised Ego",
+              "slug": "bruised-ego",
+              "gradeFont": "5+",
+              "gradeV": "V2",
+              "stars": 0,
+              "start": "stand"
+            },
+            {
+              "name": "Massaged Ego",
+              "slug": "massaged-ego",
+              "gradeFont": "4+",
+              "gradeV": "V1",
+              "stars": 0,
+              "start": "stand"
+            },
+            {
+              "name": "Sacrificed Ego",
+              "slug": "sacrificed-ego",
+              "gradeFont": "6A",
+              "gradeV": "V3",
+              "stars": 0,
+              "start": "stand"
+            }
+          ]
+        },
+        {
+          "id": "little-brother",
+          "name": "Little Brother",
+          "description": "About 300m round to the right of the Grindstone is Little Brother, a much smaller, isolated boulder, a couple of fields down from the main cliff, with just one route on it.",
+          "topos": [
+            {
+              "src": "images/topos/big-brother.png",
+              "alt": "images/topos/big-brother.png",
+              "credit": "images/topos/big-brother.png",
+              "startsAt": 1
+            }
+          ],
+          "climbs": [
+            {
+              "name": "Ordinary Gold",
+              "slug": "ordinary-gold",
+              "gradeFont": "6B",
+              "gradeV": "V4",
               "stars": 0,
               "start": "sit"
             }

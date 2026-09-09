@@ -1398,7 +1398,10 @@ function renderErrorBanner() {
 
   banner.hidden = !errors.length;
   list.hidden = !errors.length;
-  if (!errors.length) return;
+  if (!errors.length) {
+    list.innerHTML = "";        // hidden is not the same as emptied
+    return;
+  }
 
   $("#error-count").textContent = errorCountLabel();
   list.innerHTML = "";
