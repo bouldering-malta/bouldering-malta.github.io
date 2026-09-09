@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-09T08:02:34Z",
+    "version": "2026-09-09T09:13:35Z",
     "updated": "2026-09-09",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -471,6 +471,59 @@
               "stars": 0,
               "start": "stand",
               "description": "Facing the block a right to left traverse, exiting up the obvious left groove."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mgarr-ix-xini-gozo",
+      "name": "Mgarr Ix-Xini (Gozo)",
+      "description": "The largest sport climbing crag in Malta and Gozo also has Deep Water Solo traverse routes as well as some bouldering. A must visit for any climber. ",
+      "approach": "Cross the road heading towards the valley and follow a dirt track slowly down and along the edge of the cliffs. The path eventually drops down left into the valley.",
+      "parking": "For bouldering approach along Triq ta' Mgarr Ix-Xini and park in a layby.  https://maps.app.goo.gl/KwYD9VBiuqfyHHcd9",
+      "coords": {
+        "lat": 36.023422,
+        "lng": 14.263746
+      },
+      "mapUrl": "https://maps.google.com/?q=36.023422,14.263746",
+      "boulders": [
+        {
+          "id": "hammerhead-boulder",
+          "name": "Hammerhead Boulder",
+          "description": "Approach as for Champagne Walls sport climbing. Boulder is in the middle of the valley opposite the left hand end of the Champagne Walls. \n",
+          "topos": [
+            {
+              "src": "images/topos/hammerhead-topo.png",
+              "alt": "images/topos/hammerhead-topo.png",
+              "credit": "Malta Rock Climbing - The Comprehensive Guide 2007",
+              "startsAt": 1
+            }
+          ],
+          "climbs": [
+            {
+              "name": "Metamorphasis",
+              "slug": "metamorphasis",
+              "gradeFont": "7A",
+              "gradeV": "V6",
+              "stars": 0,
+              "start": "stand"
+            },
+            {
+              "name": "The Neanderthals",
+              "slug": "the-neanderthals",
+              "gradeFont": "6A",
+              "gradeV": "V3",
+              "stars": 0,
+              "start": "stand"
+            },
+            {
+              "name": "Project",
+              "slug": "project",
+              "gradeFont": "9A",
+              "gradeV": "V17",
+              "stars": 0,
+              "start": "stand"
             }
           ]
         }
