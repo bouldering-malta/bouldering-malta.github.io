@@ -40,7 +40,7 @@ a { color: #000 !important; text-decoration: none; }
 body[data-print-sector] .band-jump,
 body[data-print-sector] .masthead,
 body[data-print-sector] .sector-index,
-body[data-print-sector] .ack,
+body[data-print-sector] .note,
 body[data-print-sector] .catalog,
 body[data-print-sector] .page-footer { display: none !important; }
 

@@ -508,27 +508,29 @@ body.grade-v .g-font::after { content: ")"; }
   100% { background: transparent; }
 }
 
-/* ---------- acknowledgements ---------- */
+/* ---------- intro notes ---------- */
 
-.ack { padding: 0 0 0.4rem; }
-.ack > details > summary { padding: 0.85rem 0; min-height: 0; }
-.ack h2 { font-size: 1.15rem; }
-.ack p {
+.note { padding: 0 0 0.4rem; }
+.note + .note { margin-top: -0.2rem; }
+.note > details[open] { padding-bottom: 0.4rem; }
+.note > details > summary { padding: 0.85rem 0; min-height: 0; }
+.note h2 { font-size: 1.15rem; }
+.note p {
   margin: 0 0 0.9rem;
   font-size: 0.9rem;
   color: var(--ink-soft);
 }
-.ack cite { font-style: italic; }
+.note cite { font-style: italic; }
 
 /* ---------- catalog ---------- */
 
 .catalog { padding: 0; }
 
 .catalog > .band-inner > details { border-top: 0; }
-.ack > details { border-top: 1px solid var(--rule); }
+.note > details { border-top: 1px solid var(--rule); }
 
 .catalog > .band-inner > details > summary,
-.ack > details > summary {
+.note > details > summary {
   display: flex;
   align-items: baseline;
   padding: 1.1rem 0;
@@ -537,12 +539,12 @@ body.grade-v .g-font::after { content: ")"; }
   min-height: 44px;
 }
 .catalog > .band-inner > details > summary::-webkit-details-marker,
-.ack > details > summary::-webkit-details-marker { display: none; }
+.note > details > summary::-webkit-details-marker { display: none; }
 
 .catalog h2,
-.ack h2 { margin-bottom: 0; }
+.note h2 { margin-bottom: 0; }
 .catalog h2::before,
-.ack h2::before {
+.note h2::before {
   content: "+";
   display: inline-block;
   width: 1.1em;
@@ -551,7 +553,7 @@ body.grade-v .g-font::after { content: ")"; }
   font-size: 0.8em;
 }
 .catalog > .band-inner > details[open] h2::before,
-.ack > details[open] h2::before { content: "–"; }
+.note > details[open] h2::before { content: "–"; }
 
 .catalog > .band-inner > details[open] > summary { margin-bottom: 1rem; }
 
