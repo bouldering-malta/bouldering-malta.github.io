@@ -8,7 +8,7 @@
     "hero": {
       "src": "images/hero/ghar-hassan-dawn.jpg",
       "alt": "Placeholder hero image — sea cliffs and boulders at Għar Ħasan",
-      "credit": "Photo: placeholder"
+      "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)"
     }
   },
   "sectors": [
@@ -33,19 +33,19 @@
             {
               "src": "images/topos/hassan-topo-1.png",
               "alt": "Topo of Hassan Terrace, left-hand section, showing problems 1 to 6 marked in red",
-              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 1
             },
             {
               "src": "images/topos/hassan-topo-2.png",
               "alt": "Topo of Hassan Terrace, right-hand section, showing problems 7 to 11 marked in red",
-              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 7
             },
             {
               "src": "images/topos/hassan-topo-3.png",
               "alt": "images/topos/hassan-topo-3.png",
-              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 12
             }
           ],
@@ -318,25 +318,25 @@
             {
               "src": "images/topos/jeffs-topo-1.png",
               "alt": "Topo of Jeff's Blocks 1",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 1
             },
             {
               "src": "images/topos/jeffs-topo-2.png",
               "alt": "Topo of Jeff's Blocks 2",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 8
             },
             {
               "src": "images/topos/jeffs-topo-3.png",
               "alt": "Topo of Jeff's Blocks 3",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 11
             },
             {
               "src": "images/topos/jeffs-topo-4.png",
               "alt": "Topo of Jeff's Blocks 4",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide - 2007",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 12
             }
           ],
@@ -499,7 +499,7 @@
             {
               "src": "images/topos/hammerhead-topo.png",
               "alt": "images/topos/hammerhead-topo.png",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide 2007",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 1
             }
           ],
@@ -581,7 +581,7 @@
             {
               "src": "images/topos/grindstone-topo.png",
               "alt": "images/topos/grindstone-topo.png",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide (2007) ",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 1
             }
           ],
@@ -679,7 +679,7 @@
             {
               "src": "images/topos/big-brother-topo.png",
               "alt": "images/topos/big-brother-topo.png",
-              "credit": "Malta rock Climbing - The Comprehensive Guide (2007)",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 1
             }
           ],
@@ -775,7 +775,7 @@
             {
               "src": "images/topos/dahlet-qorrot-topo.png",
               "alt": "images/topos/dahlet-qorrot-topo.png",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide (2007)",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 1
             }
           ],
@@ -849,7 +849,7 @@
             {
               "src": "images/topos/dahlet-qorrot-topo-2.png",
               "alt": "images/topos/dahlet-qorrot-topo-2.png",
-              "credit": "Malta Rock Climbing - The Comprehensive Guide (2007)",
+              "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)",
               "startsAt": 1
             }
           ],
