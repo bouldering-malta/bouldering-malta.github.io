@@ -39,6 +39,18 @@ function renderHero(meta) {
     (meta.hero.credit ? '<p class="hero-credit"><small>' + esc(meta.hero.credit) + "</small></p>" : "");
 }
 
+/* The strap under the ramp counts what the guide actually holds, so it stays
+   true as sectors are added rather than being a number typed into the markup. */
+function renderMastheadCount(data) {
+  var problems = state.climbs.length;
+  var sectors = (data.sectors || []).length;
+  if (!problems) return;
+
+  $("#masthead-count").textContent =
+    problems + (problems === 1 ? " problem" : " problems") +
+    " across " + sectors + (sectors === 1 ? " sector" : " sectors");
+}
+
 function renderContact(meta) {
   var mail = meta.contactEmail;
   var link = $("#contact-email");
@@ -486,6 +498,7 @@ function start(data) {
 
   state.climbs = decorate(data);
   renderHero(data.meta);
+  renderMastheadCount(data);
   renderContact(data.meta);
   renderIndex(data.sectors);
   renderSectors(data.sectors);

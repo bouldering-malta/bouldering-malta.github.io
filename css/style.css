@@ -48,6 +48,17 @@
   --accent: #0b5e5a;
   --accent-soft: #e3ece9;
 
+  /* Grade ramp on the dark cover band. The g1-g5 values below are text colours
+     for light paper — against #14201f the hard end falls to 1.6:1 and vanishes,
+     so the band gets the same hue family lifted, running 5.7:1 to 8.3:1.
+     Harder still reads as more emphasis; on a dark ground that means brighter
+     rather than darker. */
+  --ramp-1: #8a9a97;
+  --ramp-2: #6fa9a2;
+  --ramp-3: #4fb3a6;
+  --ramp-4: #2ec0a8;
+  --ramp-5: #16cdad;
+
   /* grade ramp: one hue family, easy (muted) to hard (saturated, dark) */
   --g1: #5c6867;
   --g2: #46706d;
@@ -172,23 +183,8 @@ a:hover { text-decoration-thickness: 2px; }
   flex: 0 0 auto;
 }
 .btn-solid:hover { background: #0a4f4b; border-color: #0a4f4b; }
+a.btn-solid { display: inline-block; text-decoration: none; }
 
-/* The accent green is nearly as dark as the cover band, so the call to action
-   there inverts instead: light fill, dark text. */
-.cover-actions { margin: 0 0 1.1rem; max-width: none; }
-.btn-cover {
-  display: inline-block;
-  background: var(--deep-ink);
-  border-color: var(--deep-ink);
-  color: var(--deep);
-  font-weight: 600;
-  text-decoration: none;
-}
-.btn-cover:hover {
-  background: #fff;
-  border-color: #fff;
-  color: var(--deep);
-}
 
 /* Per-sector download: a quiet text link, so it reads as a detail of the row
    it sits in rather than a second call to action. */
@@ -211,7 +207,42 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* ---------- masthead ---------- */
 
-.masthead { padding-top: 0; padding-bottom: 2.6rem; }
+.masthead { padding-top: 0; padding-bottom: 2.6rem; text-align: center; }
+
+/* Centring the title means centring what sits under it, or the block reads as
+   two different layouts stacked. The measure still applies — it is just
+   centred rather than flush left. */
+.masthead-text p { margin-left: auto; margin-right: auto; }
+
+.masthead-kicker {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--deep-soft);
+  margin: 0 0 0.9rem;
+  max-width: none;
+}
+
+/* The guide's own grade ramp, easy to hard — the same five values the grades
+   use throughout, so the masthead carries the system rather than an ornament. */
+.grade-ramp {
+  width: min(18rem, 60%);
+  height: 4px;
+  margin: 1.4rem auto 0;
+  background: linear-gradient(to right,
+    var(--ramp-1) 0 20%, var(--ramp-2) 20% 40%, var(--ramp-3) 40% 60%,
+    var(--ramp-4) 60% 80%, var(--ramp-5) 80% 100%);
+}
+
+.masthead-count {
+  font-size: 0.86rem;
+  color: var(--deep-soft);
+  margin: 1rem 0 1.6rem;
+  max-width: none;
+  font-variant-numeric: tabular-nums;
+}
+.masthead-count:empty { display: none; }
 
 .hero { margin: 0 0 1.6rem; }
 .hero img { border-radius: 2px; }
@@ -223,10 +254,20 @@ a:hover { text-decoration-thickness: 2px; }
 
 .contact {
   font-size: 0.98rem;
-  color: var(--deep-soft);
+  color: var(--ink-soft);
 }
-.contact a { color: var(--deep-accent); }
+.contact a { color: var(--accent); }
 .hero-credit { color: var(--deep-soft); }
+
+/* Submission routes: the band's opening line, ahead of the collapsible notes.
+   Left-aligned like everything else on paper — it was the centring of this
+   block that made the banner noisy. */
+.contribute {
+  padding: 0.2rem 0 1.4rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0.4rem;
+}
+.contribute-actions { margin: 0 0 0.9rem; max-width: none; }
 .contact-alt { font-size: 0.9rem; }
 
 .grade-toggle {
