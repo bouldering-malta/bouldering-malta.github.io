@@ -64,14 +64,6 @@ function renderContact(meta) {
     if (a.id !== "contact-email" && a.textContent.indexOf("@") > -1) a.textContent = mail;
   });
 
-  var repo = meta.githubRepo;
-  var issue = $("#issue-link");
-  if (repo) {
-    issue.href = "https://github.com/" + repo +
-      "/issues/new?template=new-problem.yml&title=" + encodeURIComponent("New problem: ");
-  } else {
-    issue.closest("p").hidden = true;
-  }
 }
 
 /* The jump bar follows what is on the page, so its order matches the grouped
