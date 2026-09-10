@@ -239,13 +239,26 @@ export function sectorHtml(sector) {
     ? '<a href="' + esc(sector.mapUrl) + '" rel="noopener">Open in maps</a>'
     : "";
 
-  var location = "";
+  /* Every row of the notes list is optional, so the list is assembled rather
+     than templated. A sector with none of them gets no empty <dl>. */
+  var notes = [];
+
+  if (sector.approach) notes.push("<dt>Approach</dt><dd>" + esc(sector.approach) + "</dd>");
+
+  var parkingLink = sector.parkingUrl
+    ? '<a href="' + esc(sector.parkingUrl) + '" rel="noopener">Open parking in maps</a>'
+    : "";
+  if (sector.parking || parkingLink) {
+    notes.push("<dt>Parking</dt><dd>" + esc(sector.parking || "") +
+      (sector.parking && parkingLink ? " " : "") + parkingLink + "</dd>");
+  }
+
   if (hasCoords) {
-    location = '<dt>Coordinates</dt><dd class="coords">' +
+    notes.push('<dt>Coordinates</dt><dd class="coords">' +
       sector.coords.lat.toFixed(4) + ", " + sector.coords.lng.toFixed(4) +
-      (link ? " " + link : "") + "</dd>";
+      (link ? " " + link : "") + "</dd>");
   } else if (link) {
-    location = "<dt>Location</dt><dd class=\"coords\">" + link + "</dd>";
+    notes.push('<dt>Location</dt><dd class="coords">' + link + "</dd>");
   }
 
   return '<details class="sector" id="' + esc(sector.id) + '">' +
@@ -256,16 +269,8 @@ export function sectorHtml(sector) {
       '">Download PDF</button>' +
     "</summary>" +
     '<div class="sector-body">' +
-      "<p>" + esc(sector.description) + "</p>" +
-      '<dl class="sector-notes">' +
-        "<dt>Approach</dt><dd>" + esc(sector.approach) + "</dd>" +
-        "<dt>Parking</dt><dd>" + esc(sector.parking) +
-          (sector.parkingUrl
-            ? ' <a href="' + esc(sector.parkingUrl) + '" rel="noopener">Open parking in maps</a>'
-            : "") +
-        "</dd>" +
-        location +
-      "</dl>" +
+      (sector.description ? "<p>" + esc(sector.description) + "</p>" : "") +
+      (notes.length ? '<dl class="sector-notes">' + notes.join("") + "</dl>" : "") +
       (sector.boulders || []).map(function (b) { return boulderHtml(sector, b); }).join("") +
     "</div></details>";
 }
