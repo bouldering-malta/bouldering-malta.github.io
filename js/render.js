@@ -208,7 +208,7 @@ export function topoSegments(boulder) {
 
 export function boulderHtml(sector, boulder) {
   var html = '<section class="boulder" id="' + esc(sector.id + "--" + boulder.id) + '">' +
-    "<h3>" + esc(boulder.name) + "</h3>";
+    "<h4>" + esc(boulder.name) + "</h4>";
 
   if (boulder.description) html += "<p>" + esc(boulder.description) + "</p>";
 
@@ -227,6 +227,19 @@ export function boulderHtml(sector, boulder) {
   });
 
   return html + "</section>";
+}
+
+/* Sectors keep their order in the file; the island only decides which group
+   they land in. A guide covering one island gets one group and no headings. */
+export function groupByIsland(sectors) {
+  var groups = [
+    { island: "Malta", sectors: [] },
+    { island: "Gozo", sectors: [] }
+  ];
+  (sectors || []).forEach(function (sector) {
+    groups[sector.gozo ? 1 : 0].sectors.push(sector);
+  });
+  return groups.filter(function (g) { return g.sectors.length; });
 }
 
 export function sectorHtml(sector) {

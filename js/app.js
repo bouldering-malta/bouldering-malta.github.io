@@ -6,7 +6,7 @@
 
 import {
   decorate, esc, gradeHtml, starsHtml, mediaHtml, sectorHtml, topoList,
-  watchBrokenImages
+  groupByIsland, watchBrokenImages
 } from "./render.js";
 import { FONT_SCALE, V_SCALE } from "../shared/grades.js";
 
@@ -71,8 +71,16 @@ function renderContact(meta) {
   }
 }
 
+/* The jump bar follows what is on the page, so its order matches the grouped
+   sectors rather than the raw file order. */
+function orderedSectors(sectors) {
+  return groupByIsland(sectors).reduce(function (all, group) {
+    return all.concat(group.sectors);
+  }, []);
+}
+
 function renderIndex(sectors) {
-  $("#sector-index-list").innerHTML = sectors.map(function (s) {
+  $("#sector-index-list").innerHTML = orderedSectors(sectors).map(function (s) {
     return '<li><a href="#' + esc(s.id) + '">' +
       '<span class="jump-name">' + esc(s.name) + "</span>" +
       '<span class="count">' + s._count + "</span></a></li>";
@@ -80,7 +88,15 @@ function renderIndex(sectors) {
 }
 
 function renderSectors(sectors) {
-  $("#sectors").innerHTML = sectors.map(sectorHtml).join("");
+  var groups = groupByIsland(sectors);
+  var named = groups.length > 1;      // one island needs no heading to tell them apart
+
+  $("#sectors").innerHTML = groups.map(function (group) {
+    return '<section class="island-group">' +
+      (named ? '<h3 class="island-title">' + esc(group.island) + "</h3>" : "") +
+      group.sectors.map(sectorHtml).join("") +
+      "</section>";
+  }).join("");
 }
 
 function renderFooter(meta) {
@@ -119,10 +135,20 @@ function buildGradeOptions() {
 }
 
 function buildSectorOptions() {
-  $("#f-sector").innerHTML = '<option value="all">All</option>' +
-    state.data.sectors.map(function (s) {
+  var groups = groupByIsland(state.data.sectors);
+  var options = function (sectors) {
+    return sectors.map(function (s) {
       return '<option value="' + esc(s.id) + '">' + esc(s.name) + "</option>";
     }).join("");
+  };
+
+  // Grouped by island so the filter reads the way the page does.
+  $("#f-sector").innerHTML = '<option value="all">All</option>' +
+    (groups.length > 1
+      ? groups.map(function (g) {
+          return '<optgroup label="' + esc(g.island) + '">' + options(g.sectors) + "</optgroup>";
+        }).join("")
+      : options(state.data.sectors));
 }
 
 /* One comparator per sortable column. Each returns 0 for a tie, and every sort

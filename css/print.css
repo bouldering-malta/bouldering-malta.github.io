@@ -37,6 +37,9 @@ a { color: #000 !important; text-decoration: none; }
 .band-inner { max-width: none; padding: 0; }
 
 /* When a print run is active, strip everything but the target sector(s) */
+/* The island heading would orphan itself above a page break, and each sector
+   already prints its own name. */
+body[data-print-sector] .island-title,
 body[data-print-sector] .band-jump,
 body[data-print-sector] .masthead,
 body[data-print-sector] .sector-index,
@@ -75,7 +78,7 @@ body[data-print-sector] .sector-name::before { content: none; }
 .boulder {
   padding-top: 12pt;
 }
-.boulder h3 { page-break-after: avoid; }
+.boulder h4 { page-break-after: avoid; }
 figure { page-break-inside: avoid; }
 
 .topo-btn { cursor: default; }

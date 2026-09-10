@@ -15,6 +15,8 @@ export const SCHEMA = {
     fields: {
       id:          { type: "slug",     required: true,  from: "name", pinned: true },
       name:        { type: "text",     required: true,  label: "Sector name" },
+      gozo:        { type: "boolean",  required: false, label: "On Gozo",
+                     hint: "Leave unticked for Malta. Groups the sector under its island on the site." },
       description: { type: "textarea", required: true },
       approach:    { type: "textarea", required: false },
       parking:     { type: "textarea", required: false },
