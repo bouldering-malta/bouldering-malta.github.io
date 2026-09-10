@@ -56,8 +56,11 @@ function renderContact(meta) {
   var link = $("#contact-email");
   link.textContent = mail;
   link.href = "mailto:" + mail;
+  /* The address comes from data.json, but a link may carry its own subject —
+     rebuilding the href blindly would throw that away. */
   document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
-    a.href = "mailto:" + mail;
+    var query = (a.getAttribute("href") || "").split("?")[1];
+    a.href = "mailto:" + mail + (query ? "?" + query : "");
     if (a.id !== "contact-email" && a.textContent.indexOf("@") > -1) a.textContent = mail;
   });
 
