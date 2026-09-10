@@ -173,6 +173,23 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .btn-solid:hover { background: #0a4f4b; border-color: #0a4f4b; }
 
+/* The accent green is nearly as dark as the cover band, so the call to action
+   there inverts instead: light fill, dark text. */
+.cover-actions { margin: 0 0 1.1rem; max-width: none; }
+.btn-cover {
+  display: inline-block;
+  background: var(--deep-ink);
+  border-color: var(--deep-ink);
+  color: var(--deep);
+  font-weight: 600;
+  text-decoration: none;
+}
+.btn-cover:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--deep);
+}
+
 /* Per-sector download: a quiet text link, so it reads as a detail of the row
    it sits in rather than a second call to action. */
 .print-sector,
