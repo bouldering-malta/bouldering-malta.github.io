@@ -25,7 +25,10 @@ export const SCHEMA = {
       coords:      { type: "coords",   required: false },
       mapUrl:      { type: "url",      required: false, label: "Map link",
                      derivedFrom: "coords",
-                     hint: "Paste a Google Maps link, including a short maps.app.goo.gl one. Filled in from the coordinates if you leave it blank." }
+                     hint: "Paste a Google Maps link, including a short maps.app.goo.gl one. Filled in from the coordinates if you leave it blank." },
+      gallery:     { type: "imageList", required: false, label: "Community gallery",
+                     itemLabel: "Photo",
+                     hint: "Optional. Photos of people climbing here. Never printed, and only fetched as they scroll into view." }
     }
   },
   boulder: {
@@ -124,8 +127,11 @@ export function fieldApplies(spec, node) {
   return !spec.exceptWhen || !node[spec.exceptWhen];
 }
 
-/* "Topos" -> "Topo". Used for the rows of an imageList and its messages. */
+/* "Topos" -> "Topo", and anything whose singular is not just the plural minus
+   an s declares an itemLabel instead. */
 export function singularLabel(type, name) {
+  var spec = SCHEMA[type].fields[name];
+  if (spec && spec.itemLabel) return spec.itemLabel;
   return labelFor(type, name).replace(/s$/, "");
 }
 

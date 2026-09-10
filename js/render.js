@@ -105,7 +105,8 @@ export function gradeHtml(climb) {
 export function mediaHtml(img, cls) {
   if (!img || !img.src) return "";
   return '<img' + (cls ? ' class="' + cls + '"' : "") +
-    ' src="' + esc(img.src) + '" alt="' + esc(img.alt) + '" loading="lazy">';
+    ' src="' + esc(img.src) + '" alt="' + esc(img.alt) +
+    '" loading="lazy" decoding="async">';
 }
 
 /* Error events do not bubble, but they do fire on the way down, so one
@@ -116,6 +117,32 @@ export function watchBrokenImages(doc) {
     var el = e.target;
     if (el && el.tagName === "IMG") el.classList.add("is-missing");
   }, true);
+}
+
+/* A horizontal strip of thumbnails.
+
+   Every image is lazy and async-decoded, and each sits in a fixed-size frame
+   with object-fit, so nothing downloads until it scrolls into view and nothing
+   shifts the layout when it arrives. An empty or missing list renders nothing
+   at all — no heading, no empty rail. */
+export function galleryHtml(images, keyPrefix, heading) {
+  var list = (images || []).filter(function (img) { return img && img.src; });
+  if (!list.length) return "";
+
+  return '<section class="gallery">' +
+    (heading ? '<h3 class="gallery-title">' + esc(heading) + "</h3>" : "") +
+    '<div class="gallery-strip">' +
+      list.map(function (img, i) {
+        return '<figure class="gallery-item">' +
+          '<button type="button" class="gallery-btn" data-img="' +
+            esc(keyPrefix) + ":" + i + '" aria-label="Open photo: ' + esc(img.alt) + '">' +
+            '<img src="' + esc(img.src) + '" alt="' + esc(img.alt) +
+            '" loading="lazy" decoding="async">' +
+          "</button>" +
+          (img.credit ? "<figcaption>" + esc(img.credit) + "</figcaption>" : "") +
+        "</figure>";
+      }).join("") +
+    "</div></section>";
 }
 
 /* ------------------------------------------------------------------ nodes */
@@ -283,6 +310,7 @@ export function sectorHtml(sector) {
     "</summary>" +
     '<div class="sector-body">' +
       (sector.description ? "<p>" + esc(sector.description) + "</p>" : "") +
+      galleryHtml(sector.gallery, "gallery:" + sector.id, "Community photos") +
       (notes.length ? '<dl class="sector-notes">' + notes.join("") + "</dl>" : "") +
       (sector.boulders || []).map(function (b) { return boulderHtml(sector, b); }).join("") +
     "</div></details>";

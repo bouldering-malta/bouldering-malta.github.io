@@ -90,8 +90,11 @@ img.is-missing {
   aspect-ratio: 4 / 3;
 }
 
-/* Action photos add pages without navigational value */
-.climb-photos { display: none !important; }
+/* Action photos and community galleries add pages and weight without
+   navigational value. Topos and their credits still print. */
+.climb-photos,
+.gallery,
+.band-gallery { display: none !important; }
 
 /* Both grades always print, whatever the toggle says */
 body.grade-font .g-v,

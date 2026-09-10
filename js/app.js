@@ -6,7 +6,7 @@
 
 import {
   decorate, esc, gradeHtml, starsHtml, mediaHtml, sectorHtml, topoList,
-  groupByIsland, watchBrokenImages
+  galleryHtml, groupByIsland, watchBrokenImages
 } from "./render.js";
 import { FONT_SCALE, V_SCALE } from "../shared/grades.js";
 
@@ -77,6 +77,16 @@ function orderedSectors(sectors) {
   return groupByIsland(sectors).reduce(function (all, group) {
     return all.concat(group.sectors);
   }, []);
+}
+
+/* The whole band stays out of the document unless there are photos, so an
+   empty gallery costs nothing and shows nothing. */
+function renderSiteGallery(meta) {
+  var html = galleryHtml(meta.gallery, "site", "");
+  var band = $("#site-gallery");
+
+  band.hidden = !html;
+  if (html) $("#site-gallery-body").innerHTML = html;
 }
 
 function renderIndex(sectors) {
@@ -375,6 +385,16 @@ function wireCopyLinks() {
 
 function findImage(key) {
   var parts = key.split(":");
+
+  if (parts[0] === "site") {
+    return (state.data.meta.gallery || [])[parseInt(parts[1], 10) || 0];
+  }
+
+  if (parts[0] === "gallery") {
+    var sector = state.data.sectors.filter(function (s) { return s.id === parts[1]; })[0];
+    return sector ? (sector.gallery || [])[parseInt(parts[2], 10) || 0] : null;
+  }
+
   if (parts[0] === "topo") {
     var id = parts[1];
     var index = parseInt(parts[2], 10) || 0;
@@ -416,7 +436,7 @@ function closeLightbox() {
 
 function wireLightbox() {
   document.addEventListener("click", function (e) {
-    var btn = e.target.closest(".topo-btn");
+    var btn = e.target.closest(".topo-btn, .gallery-btn");
     if (btn) {
       e.preventDefault();
       openLightbox(findImage(btn.dataset.img));
@@ -446,7 +466,10 @@ function topoImagesReady(sectors) {
   sectors.forEach(function (sector) {
     if (!sector.classList.contains("print-target")) return;
     Array.prototype.forEach.call(sector.querySelectorAll("figure img"), function (img) {
-      if (!img.closest(".climb-photos")) images.push(img);
+      // Gallery and action photos are hidden by print.css, so waiting on them
+      // would download megabytes that never reach the page.
+      if (img.closest(".climb-photos") || img.closest(".gallery")) return;
+      images.push(img);
     });
   });
 
@@ -525,6 +548,7 @@ function start(data) {
   state.climbs = decorate(data);
   renderHero(data.meta);
   renderMastheadCount(data);
+  renderSiteGallery(data.meta);
   renderContact(data.meta);
   renderIndex(data.sectors);
   renderSectors(data.sectors);

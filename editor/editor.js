@@ -1287,6 +1287,13 @@ function imageListControl(node, name, type, spec) {
   });
   holder.appendChild(add);
 
+  if (spec.hint) {
+    var hint = document.createElement("p");
+    hint.className = "hint";
+    hint.textContent = spec.hint;
+    holder.appendChild(hint);
+  }
+
   return holder;
 }
 

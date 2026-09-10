@@ -2,7 +2,7 @@
   "meta": {
     "title": "Bouldering Malta",
     "contactEmail": "boulderingmalta@gmail.com",
-    "version": "2026-09-10T08:11:16Z",
+    "version": "2026-09-10T10:41:40Z",
     "updated": "2026-09-10",
     "githubRepo": "bouldering-malta/bouldering-malta.github.io",
     "hero": {
@@ -878,6 +878,13 @@
       "name": "Xgħajra",
       "description": "This sector holds the best collection of proposed hard boulders on the island, up to f8a (V11). Due to it's exposure to rough sea's during storms the sector is continually reshaped over the years, with new problems appearing and old one's disappearing. No topos currently.",
       "mapUrl": "https://maps.app.goo.gl/i8qcotZkaQiJc84b8",
+      "gallery": [
+        {
+          "src": "images/gallery/xghajra/david-attard.jpg",
+          "alt": "Climber pulling through a steep overhanging prow at sunset, crash pads spread on the slab below and the coastline behind",
+          "credit": "Photo: David Attard"
+        }
+      ],
       "boulders": []
     }
   ]
