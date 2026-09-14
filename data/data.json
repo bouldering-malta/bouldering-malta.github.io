@@ -4,12 +4,7 @@
     "contactEmail": "boulderingmalta@gmail.com",
     "version": "2026-09-10T10:41:40Z",
     "updated": "2026-09-10",
-    "githubRepo": "bouldering-malta/bouldering-malta.github.io",
-    "hero": {
-      "src": "images/hero/ghar-hassan-dawn.jpg",
-      "alt": "Placeholder hero image — sea cliffs and boulders at Għar Ħasan",
-      "credit": "Photo: Malta Rock Climbing - The Comprehensive Guide (2007)"
-    }
+    "githubRepo": "bouldering-malta/bouldering-malta.github.io"
   },
   "sectors": [
     {

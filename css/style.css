@@ -246,6 +246,7 @@ a.btn-solid { display: inline-block; text-decoration: none; }
 .masthead-count:empty { display: none; }
 
 .hero { margin: 0 0 1.6rem; }
+.hero:empty { display: none; }
 .hero img { border-radius: 2px; }
 
 .masthead h1 {
