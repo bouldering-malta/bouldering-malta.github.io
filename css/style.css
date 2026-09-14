@@ -208,7 +208,7 @@ a.btn-solid { display: inline-block; text-decoration: none; }
 
 /* ---------- masthead ---------- */
 
-.masthead { padding-top: 0; padding-bottom: 2.6rem; text-align: center; }
+.masthead { padding-top: 3.2rem; padding-bottom: 3.2rem; text-align: center; }
 
 /* Centring the title means centring what sits under it, or the block reads as
    two different layouts stacked. The measure still applies — it is just
@@ -836,7 +836,8 @@ body.grade-v .g-font::after { content: ")"; }
   :root { --pad: 2rem; }
 
   .masthead {
-    padding-top: 1rem;
+    padding-top: 5rem;
+    padding-bottom: 4.4rem;
   }
   .climb-photos figure { width: 10rem; }
 }
